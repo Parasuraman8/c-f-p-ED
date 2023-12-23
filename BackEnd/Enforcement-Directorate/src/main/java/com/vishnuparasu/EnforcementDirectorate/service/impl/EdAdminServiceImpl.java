@@ -8,18 +8,23 @@ import com.vishnuparasu.EnforcementDirectorate.repository.EdRolesRepo;
 import com.vishnuparasu.EnforcementDirectorate.repository.EdUserCredentialRepo;
 import com.vishnuparasu.EnforcementDirectorate.service.EdAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class EdAdminServiceImpl implements EdAdminService {
 
     @Autowired
     private EdAdminRepo edAdminRepo;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private EdUserCredentialRepo edUserCredentialRepo;
@@ -64,6 +69,8 @@ public class EdAdminServiceImpl implements EdAdminService {
 
     @Override
     public EdAdminEntity createAdmin(EdAdminEntity edAdminEntity) {
+        EdUserCredentials userCredentials =  edAdminEntity.getEdUserCredentials().iterator().next();
+        userCredentials.setPassword(passwordEncoder.encode(userCredentials.getPassword()));
         return edAdminRepo.save(edAdminEntity);
     }
 
@@ -85,8 +92,8 @@ public class EdAdminServiceImpl implements EdAdminService {
         Optional<EdUserCredentials> userCredentials = edUserCredentialRepo.findById(userid);
         if (userCredentials.isPresent()) {
             EdUserCredentials edUserCredentials1 = userCredentials.get();
-            edUserCredentials1.setPassword(edUserCredentials.getPassword());
-            edUserCredentials1.setEdRolesModels(edUserCredentials.getEdRolesModels());
+            edUserCredentials1.setPassword(passwordEncoder.encode(edUserCredentials.getPassword()));
+            edUserCredentials1.setEdRolesModels((Set<EdRolesEntity>) edUserCredentials.getEdRolesModels());
             return edUserCredentialRepo.save(edUserCredentials1);
         }
         return null;

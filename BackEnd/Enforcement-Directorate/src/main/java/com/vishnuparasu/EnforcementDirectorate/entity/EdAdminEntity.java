@@ -1,5 +1,7 @@
 package com.vishnuparasu.EnforcementDirectorate.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -22,10 +24,9 @@ public class EdAdminEntity implements Serializable {
     private String name;
 
     @Column(name = "date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd")
     private  Date dob;
 
-    @Column(name = "job_position")
-    private String jobPositoin;
 
     @Column(name = "gmail")
     private  String gmail;
@@ -64,14 +65,6 @@ public class EdAdminEntity implements Serializable {
 
     public void setDob(Date dob) {
         this.dob = dob;
-    }
-
-    public String getJobPositoin() {
-        return jobPositoin;
-    }
-
-    public void setJobPositoin(String jobPositoin) {
-        this.jobPositoin = jobPositoin;
     }
 
     public String getGmail() {

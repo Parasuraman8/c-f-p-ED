@@ -1,10 +1,12 @@
 package com.vishnuparasu.EnforcementDirectorate.service.impl;
 
 import com.vishnuparasu.EnforcementDirectorate.entity.EdOfficerEntity;
+import com.vishnuparasu.EnforcementDirectorate.entity.EdUserCredentials;
 import com.vishnuparasu.EnforcementDirectorate.repository.EdOfficerRepo;
 import com.vishnuparasu.EnforcementDirectorate.repository.EdUserCredentialRepo;
 import com.vishnuparasu.EnforcementDirectorate.service.EdOfficerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -16,10 +18,13 @@ import java.util.Optional;
 public class EdOfficerServiceImpl implements EdOfficerService {
 
     @Autowired
-    EdOfficerRepo edOfficerRepo;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    EdUserCredentialRepo edUserCredentialRepo;
+   private EdOfficerRepo edOfficerRepo;
+
+    @Autowired
+    private EdUserCredentialRepo edUserCredentialRepo;
 
     @Override
     public EdOfficerEntity getOfficer(String edoid) {
@@ -69,6 +74,8 @@ public class EdOfficerServiceImpl implements EdOfficerService {
 
     @Override
     public EdOfficerEntity createOfficer(EdOfficerEntity edOfficerEntity) {
+        EdUserCredentials userCredentials =  edOfficerEntity.getEdUserCredentials().iterator().next();
+        userCredentials.setPassword(passwordEncoder.encode(userCredentials.getPassword()));
         return edOfficerRepo.save(edOfficerEntity);
     }
 

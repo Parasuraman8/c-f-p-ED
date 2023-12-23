@@ -17,7 +17,10 @@ import java.util.Optional;
 public interface EdUserCredentialRepo extends JpaRepository<EdUserCredentials,String> {
 
 
+
+    @Query("SELECT u FROM EdUserCredentials u WHERE u.userName = :userName")
     Optional<EdUserCredentials> findByuserName(String userName);
+
     @Modifying
     @Query("DELETE FROM EdUserCredentials u WHERE u.eduid = :eduid")
     void deleteUserByEduid(@Param("eduid") String eduid);
