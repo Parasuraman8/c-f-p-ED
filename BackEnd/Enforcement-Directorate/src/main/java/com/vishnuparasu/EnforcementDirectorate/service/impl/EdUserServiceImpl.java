@@ -7,7 +7,9 @@ import com.vishnuparasu.EnforcementDirectorate.repository.EdUserBankRepo;
 import com.vishnuparasu.EnforcementDirectorate.repository.EdUserCredentialRepo;
 import com.vishnuparasu.EnforcementDirectorate.repository.EdUserRepo;
 import com.vishnuparasu.EnforcementDirectorate.service.EdUserService;
+import org.aspectj.weaver.ast.Literal;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -26,6 +28,9 @@ public class EdUserServiceImpl implements EdUserService {
 
     @Autowired
     private EdUserCredentialRepo edUserCredentialRepo;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public EdUserEntity getUser(String eduid) {
@@ -78,6 +83,8 @@ public class EdUserServiceImpl implements EdUserService {
 
     @Override
     public EdUserEntity createUser(EdUserEntity edUserEntity) {
+        EdUserCredentials userCredentials =  edUserEntity.getEdUserCredentials().iterator().next();
+        userCredentials.setPassword(passwordEncoder.encode(userCredentials.getPassword()));
         return edUserRepo.save(edUserEntity);
     }
 
