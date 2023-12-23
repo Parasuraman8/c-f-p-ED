@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+
+header {
+    background-color:#333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 19px;
+}
+
+.e {
+  color: red;
+}
+.d {
+  color: gold;
+}
+
+.logo img {
+    height: 117px;
+    cursor: pointer;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 30px;
+    margin-top: 8px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+nav a {
+    text-decoration: none;
+    color: rgb(250, 246, 246);
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+nav ul li :hover {
+    color: green;
+    text-underline-offset: auto;
+}
+
+nav a.active {
+    color: gold; 
+  }
+
+.loginbtn {
+    padding: 5px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration:none;
+    display: inline-block;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    
+  
+    background-color: #e7f0e7; 
+    color: rgb(17, 17, 17);
+  
+    border: 1px solid #4CAF50;
+    border-radius: 5%;
+  
+   
+    transition: background-color 0.3s ease;
+  }
+  
+
+  .loginbtn:hover {
+    color: white;
+    background-color: #45a049; 
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container {
+    max-width: 800px; 
+    margin : auto; 
+    padding: 5px; 
+    display: inline;
+    font-family: 'Times New Roman', Times, serif;;
+  }
+  
+  .imagebanner {
+    width: 100%; 
+    height: auto; 
+    border: 10px solid #333;
+  }
+
+  .wrapper {
+    display: flex;
+    border: 10px solid #333;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .wrapper .text h1 {
+    text-align: left;
+    font-weight: bolder;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+  }
+
+  .wrapper .text p {
+    text-align: left;
+    color: black;
+    margin: 17px 17px 17px 17px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+
+  }
+
+  .wrapper .text .img {
+    padding: 10px 20px;
+    margin: 10px 10px 10px;
+  }
+
+
+ 

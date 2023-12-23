@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ED Home</title>
+    </head>
+
+    <body>
+        
+        <header>
+
+            <div class="logo">
+                <a href="#"><img src="assets/ED.png" alt="Enforcement Directorate"></a>
+              
+            </div>
+
+            <h1> <b class="e">Enfor</b> <b class="d">cement</b>  <b class="e"> Direc</b> <b class="d">torate</b></h1>
+
+            <nav>
+                <ul>
+                    <li><a routerLink = '/home' class="active">Home</a></li>
+                    <li><a routerLink = '/home/service' >Service</a></li>
+                    <li><a routerLink = '/home/contact' >Contact</a></li>
+                    <button (click) = "loginForm()" class="loginbtn">Sign In</button>
+
+                </ul>
+
+                
+            </nav>
+
+        </header>
+
+        <main>           
+
+          
+            <div class="container">
+                <ngb-carousel *ngIf="images.length > 0" [interval]="slideInterval">
+                  <ng-template ngbSlide *ngFor="let image of images">
+                    <img class="imagebanner" [src]="image" alt="Slide">
+                  </ng-template>
+                </ngb-carousel>
+              </div>
+
+              <div class="wrapper">
+
+                <div class="img">
+
+                  <img src="assets/EDPNG.jpg" alt="Organizational Set Up">
+
+                </div>
+
+                <div class = "text">
+
+                  <h1>Enforcement Directorate</h1>
+                    
+                   <p>
+
+                    The <strong> Directorate of Enforcement (ED)</strong> is a domestic law enforcement agency and economic intelligence agency responsible for enforcing <strong> economic laws and fighting economic crime in India.</strong> 
+                    It is part of the Department of Revenue, Ministry of Finance, Government Of India. The Enforcement Directorate focuses on investigating and prosecuting cases related to money laundering, foreign exchange violations, and economic offenses.
+                     Its primary objective is to curb the generation and circulation of black money and to ensure compliance with the laws concerning foreign exchange and prevention of money laundering. However, 
+                     targets of the enforcement directorate have claimed that the they misuse powers against activists, scholars, and political rivals.
+                     In July 2022, according to data shared by the union government in Parliament, only 23 people have been convicted in 5,422 cases registered under the Prevention of Money Laundering Act (PMLA) in the 17 years after the law was passed, which is a conviction rate of less than 0.5%.
+                      Where as the national conviction rate in India for offences of the Indian Penal Code is 57.0% in 2021.
+                      The origin of the ED goes back to 1 May 1956, when an "enforcement unit" was formed, within the Department of Economic Affairs, for handling Exchange Control Laws violations under the Foreign Exchange Regulation Act, 1947. In 1957, the unit was renamed as the Enforcement Directorate.
+
+                   </p>
+                </div>
+
+              </div>
+
+              <div class="wrapper">
+
+
+                <div class = "text">
+
+                  <h1>Objective</h1>
+                  <p> 
+                     
+                      The prime objective of the Enforcement Directorate is the enforcement of two key Acts of the Government of India namely, The Following Act are given: <br><br> The Foreign Exchange Management Act, 1999 (FEMA) and <br>
+                        <br>The Prevention of Money Laundering Act, 2002 (PMLA), and <br><br>The Fugitive Economic Offenders Act, 2018 (FEOA).
+                  </p>
+  
+                </div>
+
+                <div class="img">
+
+                  <img src="assets/OBJ.png" alt="Organizational Set Up">
+
+
+                </div>
+
+  
+              </div>
+
+              
+              <div class="wrapper">
+
+                <div class="img">
+
+                  <img src="assets/ORG.jpg" alt="Organizational Set Up">
+
+                </div>
+
+                <div class = "text">
+
+                  <h1>Organizational set up</h1>
+
+                <p>
+                    The Directorate of Enforcement, with its headquarters at New Delhi, is headed by the director of enforcement. There are five regional offices at Mumbai, Chennai, Chandigarh, Kolkata, and Delhi headed by special directors of enforcement. 
+                    Zonal offices of the directorate are at Pune, Bengaluru, Chandigarh, Chennai, Kochi, Delhi, Panaji, Guwahati, Hyderabad, Jaipur, Jalandhar, Kolkata, Lucknow, Mumbai, Patna, and Srinagar. These are headed by a joint director.
+                    The directorate has sub-zonal offices at Mangaluru, Bhubaneshwar, Kozhikode, Indore, Madurai, Nagpur, Allahabad, Raipur, Dehradun, Ranchi, Surat, Shimla, Vishakhapatnam and Jammu which are headed by a deputy director.   
+                </p>
+
+
+                </div>
+
+
+                
+              </div>
+
+        </main>
+
+        <footer>
+
+        <p>&copy; <b> Enforcement Directorate. </b> <br>All rights reserved. <br> <br> <u> Developer Info</u> <br> <br>Parasuraman D <br> Java Developer at algoriant
+        <br> Vishnuparasu7@gmail.com
+        <br> www.algoriant.com <br> [ any bug message karo ]</p>
+
+        </footer>
+
+    </body>
+
+</html>
