@@ -23,16 +23,47 @@ public class EdAdminServiceImpl implements EdAdminService {
     private EdAdminRepo edAdminRepo;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
     private EdUserCredentialRepo edUserCredentialRepo;
 
     @Autowired
     private EdRolesRepo edRolesRepo;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
+    @Bean
+    public CommandLineRunner roleCrete() {
+        return args -> {
+            if (!edRolesRepo.findById("EDA").isPresent()) {
+                EdRolesEntity admin = new EdRolesEntity();
+                admin.setRole("EDA");
+                admin.setRoleDesc("ADMIN");
+                edRolesRepo.save(admin);
 
+            }
+        };
+    }
+
+    @Bean
+    public CommandLineRunner rootUser() {
+        return  args -> {
+            if (!edUserCredentialRepo.findByuserName("root").isPresent()) {
+                EdUserCredentials rootUser = new EdUserCredentials();
+                Set<EdRolesEntity> roles = new HashSet<>();
+                EdRolesEntity rolesEntity = new EdRolesEntity();
+
+                rolesEntity.setRoleDesc("admin");
+                rolesEntity.setRole("EDA");
+
+                roles.add(rolesEntity);
+                rootUser.setEdRolesModels(roles);
+                rootUser.setUserName("root");
+                rootUser.setPassword(passwordEncoder.encode("root"));
+
+                edUserCredentialRepo.save(rootUser);
+            }
+        };
+    }
     @Override
     public EdAdminEntity getAdmin(String edaid) {
         Optional<EdAdminEntity> oneAdmin = edAdminRepo.findByEduid(edaid);
@@ -75,40 +106,6 @@ public class EdAdminServiceImpl implements EdAdminService {
         return edAdminRepo.save(edAdminEntity);
     }
 
-    @Bean
-    public CommandLineRunner roleCrete() {
-        return args -> {
-            if (!edRolesRepo.findById("EDA").isPresent()) {
-                EdRolesEntity admin = new EdRolesEntity();
-                admin.setRole("EDA");
-                admin.setRoleDesc("ADMIN");
-                edRolesRepo.save(admin);
-
-            }
-        };
-    }
-
-    @Bean
-    public CommandLineRunner rootUser() {
-        return  args -> {
-            if (!edUserCredentialRepo.findByuserName("root").isPresent()) {
-                EdUserCredentials rootUser = new EdUserCredentials();
-                Set<EdRolesEntity> roles = new HashSet<>();
-                EdRolesEntity rolesEntity = new EdRolesEntity();
-
-                rolesEntity.setRoleDesc("admin");
-                rolesEntity.setRole("EDA");
-
-                roles.add(rolesEntity);
-                rootUser.setEdRolesModels(roles);
-                rootUser.setUserName("root");
-                rootUser.setPassword(passwordEncoder.encode("root"));
-
-                edUserCredentialRepo.save(rootUser);
-            }
-        };
-    }
-
     @Override
     public EdUserCredentials getUserCredential(String userName) {
         Optional<EdUserCredentials> oneUserCredential = edUserCredentialRepo.findById(userName);
@@ -127,8 +124,8 @@ public class EdAdminServiceImpl implements EdAdminService {
         Optional<EdUserCredentials> userCredentials = edUserCredentialRepo.findById(userid);
         if (userCredentials.isPresent()) {
             EdUserCredentials edUserCredentials1 = userCredentials.get();
-            edUserCredentials1.setPassword(passwordEncoder.encode(edUserCredentials.getPassword()));
-            edUserCredentials1.setEdRolesModels((Set<EdRolesEntity>) edUserCredentials.getEdRolesModels());
+            edUserCredentials1.setPassword(edUserCredentials.getPassword());
+            edUserCredentials1.setEdRolesModels(edUserCredentials.getEdRolesModels());
             return edUserCredentialRepo.save(edUserCredentials1);
         }
         return null;
@@ -168,5 +165,10 @@ public class EdAdminServiceImpl implements EdAdminService {
             return edRolesRepo.save(modifyRole);
         }
         return null;
+    }
+
+    @Override
+    public long getNoRow() {
+        return edAdminRepo.count();
     }
 }

@@ -3,11 +3,12 @@ package com.vishnuparasu.EnforcementDirectorate.service.impl;
 import com.vishnuparasu.EnforcementDirectorate.entity.EdUserBankEntity;
 import com.vishnuparasu.EnforcementDirectorate.entity.EdUserCredentials;
 import com.vishnuparasu.EnforcementDirectorate.entity.EdUserEntity;
+import com.vishnuparasu.EnforcementDirectorate.entity.EdUserPaymentEntity;
 import com.vishnuparasu.EnforcementDirectorate.repository.EdUserBankRepo;
 import com.vishnuparasu.EnforcementDirectorate.repository.EdUserCredentialRepo;
+import com.vishnuparasu.EnforcementDirectorate.repository.EdUserPaymentRepo;
 import com.vishnuparasu.EnforcementDirectorate.repository.EdUserRepo;
 import com.vishnuparasu.EnforcementDirectorate.service.EdUserService;
-import org.aspectj.weaver.ast.Literal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,11 @@ public class EdUserServiceImpl implements EdUserService {
     private EdUserCredentialRepo edUserCredentialRepo;
 
     @Autowired
+    private EdUserPaymentRepo edUserPaymentRepo;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
+
 
     @Override
     public EdUserEntity getUser(String eduid) {
@@ -100,6 +105,50 @@ public class EdUserServiceImpl implements EdUserService {
         List<EdUserBankEntity> listOfAllBank = new ArrayList<>();
         edUserBankRepo.findAll().forEach(listOfAllBank::add);
         return listOfAllBank;
+    }
+
+    @Override
+    public EdUserPaymentEntity createUserPatment(EdUserPaymentEntity edUserPaymentEntity) {
+        EdUserBankEntity edUserBankEntity = edUserBankRepo.findById(edUserPaymentEntity.getSenderAcctNo()).get();
+        edUserBankEntity.setTotalAmount(edUserBankEntity.getTotalAmount()-edUserPaymentEntity.getAmount());
+        edUserBankRepo.save(edUserBankEntity);
+        EdUserBankEntity recevierBankEntity = edUserBankRepo.findById(edUserPaymentEntity.getRecevierAcctNo()).get();
+        recevierBankEntity.setTotalAmount(recevierBankEntity.getTotalAmount()+edUserPaymentEntity.getAmount());
+        edUserBankRepo.save(recevierBankEntity);
+        return  edUserPaymentRepo.save(edUserPaymentEntity);
+
+
+    }
+
+    @Override
+    public EdUserPaymentEntity getSenderDetail(String senderEduid) {
+        Optional<EdUserPaymentEntity> senderDetail = edUserPaymentRepo.findSenderByEduid(senderEduid);
+        return senderDetail.get();
+    }
+
+    @Override
+    public EdUserPaymentEntity getRecevierDetail(String recevierEduid) {
+        Optional<EdUserPaymentEntity> recevierDetail = edUserPaymentRepo.findRecevierByEduid(recevierEduid);
+        return recevierDetail.get();
+    }
+
+    @Override
+    public List<EdUserPaymentEntity> getAllPatment() {
+        List<EdUserPaymentEntity> edUserPaymentEntityList = new ArrayList<>();
+        edUserPaymentRepo.findAll().forEach(edUserPaymentEntityList::add);
+        return edUserPaymentEntityList;
+    }
+
+    @Override
+    public List<EdUserPaymentEntity> getAllCompliants(String trueOrFalse) {
+        List<EdUserPaymentEntity> listOfEdUserPayment = new ArrayList<>();
+        edUserPaymentRepo.findAllByCompliantBoolean(trueOrFalse).forEach(listOfEdUserPayment::add);
+        return listOfEdUserPayment;
+    }
+
+    @Override
+    public long getNoRow() {
+        return edUserRepo.count();
     }
 
 }
