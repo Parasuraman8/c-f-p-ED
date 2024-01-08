@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { credential } from 'src/app/comman/credential';
+import { LoginServiceService } from 'src/app/service/login-service.service';
+import { UserServiceService } from 'src/app/service/user-service.service';
 
 @Component({
   selector: 'app-user-home',
@@ -6,5 +10,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-home.component.css']
 })
 export class UserHomeComponent {
+
+
+
+  constructor(
+    private loginservice : LoginServiceService,
+    private storage : credential,
+    private router : Router,
+    private service : UserServiceService
+  ) {
+    service.getUser();
+  }
+
+
+  logout() {
+    this.router.navigate(['/home']);
+    this.loginservice.logout();
+    this.storage.removeTokenAndRole();
+    this.storage.setLogin(false);
+  }
 
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { credential } from 'src/app/comman/credential';
 
 @Component({
   selector: 'app-new-register-form',
@@ -8,10 +9,19 @@ import { Router } from '@angular/router';
 })
 export class NewRegisterFormComponent {
 
-  constructor( private router : Router) { }
+  constructor( private st : credential, private router : Router) { }
 
   closeRegisterForm() {
-    this.router.navigate(['/home/login']);
+
+    if(this.st.getRole()=='EDA') {
+      this.router.navigate(['/home/Eda-page/Manager/Manage-User']);
+
+    } else if( this.st.getRole()=='EDO') {
+      this.router.navigate(['/home/Edo-page/officer-manager/Manage-User']);
+    } else {
+      this.router.navigate(['/home/login']);
+    }
+ 
   }
 
 }

@@ -67,7 +67,8 @@ public class EdJwtConfiguration extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable().exceptionHandling()
                 .authenticationEntryPoint(edRequestEntryPoint).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/ED/OfficerController/createOfficer","/ED/AdminController/createAdmin","/ED/EdJwtController/login","/ED/UserController/createEdUser").permitAll().anyRequest().authenticated();
+                .authorizeRequests().antMatchers("/ED/EdJwtController/login","/ED/UserController/createEdUser"
+                        ,"/swagger-ui/**", "/swagger-resources/**", "/v2/api-docs").permitAll().anyRequest().authenticated();
         http.addFilterBefore(getJwtFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 }

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ED Home</title>
+    </head>
+
+    <header>
+
+      <div class="logo">
+          <a routerLink = '/home'><img src="assets/ED.png" alt="ED"></a>
+        
+      </div>
+      <h1> Admin <b> ~ Sign Up</b></h1> 
+
+
+      <nav>
+          <ul>
+             
+            <button (click) = "closeRegisterForm()" class="backbtn">Back</button>
+
+          </ul>
+
+          
+      </nav>
+
+  </header>
+
+
+    <body>
+
+      <div class="wrapper-note">
+        <h3>Note<span>*</span></h3>
+       
+          <ul>
+            <li>first</li>
+            <li>second</li>
+            <li>third</li>
+          </ul>
+       
+      </div>
+
+      <div class="wrapper">  
+        <h2>Personal Information</h2>
+
+        <form class="singUpForm">
+
+
+          <label for="Name">Enter Name:<span>*</span></label>
+          <input class="input-box" id="Name" type="text" placeholder="eg: Ram V"><br>
+
+          <label for="date">Enter Date Of Brith:<span>*</span></label>
+          <input type="text" name="date" placeholder="eg: yyyy-mm-dd" ><br>
+
+          <label for="gender">Select Gender :</label>
+          <select id="gender" name="gender">
+            <option>--select---</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Others">Others</option>
+          </select><br>
+
+          <label for="phone">Enter Phone Number:<span>*</span> </label>
+          <input type="text" name="phone" id="phone" placeholder="eg: (+91) 10 digit no"><br>
+
+          <label for="gmail">Enter Gmail:<span>*</span></label>
+          <input type="email" name="gmail" id="none" required placeholder="eg: vishnu@gmail.com"><br>
+
+          <label for="fname">Enter Father Name:</label>
+          <input type="text" name="fname" placeholder="eg: Vishnu"><br>
+
+          <label for="com">Enter Community:</label>
+          <input type="text" name="com" placeholder="eg: BC,MBC,etc"><br>
+
+          <label for="religion">Enter religion:</label>
+          <input type="text" name="religion" placeholder="eg: hindu,etc"><br>
+
+          <label for="adhar">Enter Adhar number:<span>*</span></label>
+          <input type="text" name="adhar" placeholder="xxxx-xxxx-xxxx"><br>
+        </form>
+        <button class="Register">Register</button>
+      </div>
+
+    
+
+      
+
+    </body>
+
+       <footer>
+
+          <p>&copy; <b> Enforcement Directorate. </b> <br>All rights reserved. <br> <br> <u> Developer Info</u> <br> <br>Parasuraman D <br> Java Developer at algoriant
+          <br> Vishnuparasu7@gmail.com
+          <br> www.algoriant.com <br> [ any bug message karo ]</p>
+  
+          </footer>
+  
+  </html>
+  
