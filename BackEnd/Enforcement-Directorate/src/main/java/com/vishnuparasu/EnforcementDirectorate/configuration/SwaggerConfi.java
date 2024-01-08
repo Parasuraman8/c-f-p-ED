@@ -31,7 +31,8 @@ public class SwaggerConfi {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.vishnuparasu.EnforcementDirectorate"))
                 .paths(PathSelectors.any())
-                .build();
+                .build()
+                ;
     }
 
     private ApiKey apiKey() {

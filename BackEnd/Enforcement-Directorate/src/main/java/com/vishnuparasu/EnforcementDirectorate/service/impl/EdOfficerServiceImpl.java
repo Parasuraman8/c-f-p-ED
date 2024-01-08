@@ -18,13 +18,14 @@ import java.util.Optional;
 public class EdOfficerServiceImpl implements EdOfficerService {
 
     @Autowired
+    EdOfficerRepo edOfficerRepo;
+
+    @Autowired
+    EdUserCredentialRepo edUserCredentialRepo;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
-   private EdOfficerRepo edOfficerRepo;
-
-    @Autowired
-    private EdUserCredentialRepo edUserCredentialRepo;
 
     @Override
     public EdOfficerEntity getOfficer(String edoid) {
@@ -77,6 +78,11 @@ public class EdOfficerServiceImpl implements EdOfficerService {
         EdUserCredentials userCredentials =  edOfficerEntity.getEdUserCredentials().iterator().next();
         userCredentials.setPassword(passwordEncoder.encode(userCredentials.getPassword()));
         return edOfficerRepo.save(edOfficerEntity);
+    }
+
+    @Override
+    public long getNoRow() {
+        return edOfficerRepo.count();
     }
 
 
