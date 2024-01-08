@@ -1,0 +1,138 @@
+header {
+    background-color:#333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 19px;
+  }
+  
+  .logo img {
+    height: 117px;
+    cursor: pointer;
+  }
+
+
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.e {
+  color: red;
+}
+.d {
+  color: gold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 30px;
+  margin-top: 8px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+nav a {
+  text-decoration: none;
+  color: rgb(250, 246, 246);
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+nav ul li :hover {
+  color: red;
+  text-underline-offset: auto;
+}
+
+nav a.active {
+  color: gold; 
+}
+
+.signout {
+    padding: 5px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration:none;
+    display: inline-block;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    
+  
+    background-color: #e7f0e7; 
+    color: rgb(17, 17, 17);
+  
+    border: 1px solid #4CAF50;
+    border-radius: 5%;
+  
+   
+    transition: background-color 0.3s ease;
+
+}
+    .signout:hover {
+      color: white;
+      background-color: #45a049; 
+    }
+
+    .profile{
+      margin: 50px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;  
+      border-radius: 25px;
+      color: white;
+    }
+    
+    th,td,tr {
+      padding: 5px;
+      text-align: center;
+    }
+    
+    tbody th ,tr,td{
+      border: 2px solid white;
+      background-color: #333;
+    }
+    
+    td {
+      background-color: hwb(0 27% 71%);
+    }
+
+    .Remove {
+
+      padding: 5px 15px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration:none;
+      display: inline-block;
+      cursor: pointer;
+      font-family: 'Times New Roman', Times, serif;
+      
+    
+      background-color: #e7f0e7; 
+      color: rgb(17, 17, 17);
+    
+      border: 1px solid #ef0505;
+      border-radius: 5%;
+    
+     
+      transition: background-color 0.3s ease;
+    
+    }
+    
+    .Remove:hover {
+      color: white;
+      background-color: red;
+    }

@@ -13,6 +13,7 @@ import java.util.List;
 @PreAuthorize("hasAnyAuthority('EDA','EDO')")
 @RequestMapping(value = "/ED/OfficerController")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class EdOfficerController {
 
     @Autowired

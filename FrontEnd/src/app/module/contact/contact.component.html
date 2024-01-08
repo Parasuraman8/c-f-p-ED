@@ -9,7 +9,7 @@
  <header>
 
       <div class="logo">
-          <a href="#"><img src="assets/ED.png" alt="logo"></a>
+          <a routerLink = '/home'><img src="assets/ED.png" alt="Enforcement Directorate"></a>
         
       </div>
 
@@ -20,8 +20,8 @@
                     <li><a routerLink = '/home'>Home</a></li>
                     <li><a routerLink = '/home/service' >Service</a></li>
                     <li><a routerLink = '/home/contact' class="active">Contact</a></li>
-                    <button (click) = "loginForm()" class="loginbtn">Sign In</button>
-
+                    <button *ngIf= "!isLogin()" (click) = "loginForm()" class="loginbtn">Sign In</button>
+                    <button *ngIf ="isLogin()" (click) = "goProfile()"  class="loginbtn">Profile</button>
 
                 </ul>
 

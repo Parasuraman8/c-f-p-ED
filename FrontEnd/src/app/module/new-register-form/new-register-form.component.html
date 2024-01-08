@@ -9,10 +9,10 @@
     <header>
 
       <div class="logo">
-          <a href="#"><img src="assets/ED.png" alt="logo"></a>
+          <a routerLink = '/home'><img src="assets/ED.png" alt="ED"></a>
         
       </div>
-      <h1> <b class="e">Enfor</b> <b class="d">cement</b>  <b class="e"> Direc</b> <b class="d">torate</b> <b> ~ Sign Up</b></h1> 
+      <h1> User <b> ~ Sign Up</b></h1> 
 
 
       <nav>
@@ -30,11 +30,110 @@
 
     <body>
 
+      <div class="wrapper-note">
+        <h3>Note<span>*</span></h3>
+       
+          <ul>
+            <li>first</li>
+            <li>second</li>
+            <li>third</li>
+          </ul>
+       
+      </div>
+
       <div class="wrapper">  
         <h2>Personal Information</h2>
-        <button class="Register">Register</button>
+
+        <form class="singUpForm">
+
+
+          <label for="Name">Enter Name:<span>*</span></label>
+          <input class="input-box" id="Name" type="text" placeholder="eg: Ram V"><br>
+
+          <label for="date">Enter Date Of Brith:<span>*</span></label>
+          <input type="text" name="date" placeholder="eg: yyyy-mm-dd" ><br>
+
+          <label for="gender">Select Gender :</label>
+          <select id="gender" name="gender">
+            <option>--select---</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Others">Others</option>
+          </select><br>
+
+          <label for="phone">Enter Phone Number:<span>*</span> </label>
+          <input type="text" name="phone" id="phone" placeholder="eg: (+91) 10 digit no"><br>
+
+          <label for="gmail">Enter Gmail:<span>*</span></label>
+          <input type="email" name="gmail" id="none" required placeholder="eg: vishnu@gmail.com"><br>
+
+          <label for="fname">Enter Father Name:</label>
+          <input type="text" name="fname" placeholder="eg: Vishnu"><br>
+
+          <label for="com">Enter Community:</label>
+          <input type="text" name="com" placeholder="eg: BC,MBC,etc"><br>
+
+          <label for="religion">Enter religion:</label>
+          <input type="text" name="religion" placeholder="eg: hindu,etc"><br>
+
+          <label for="adhar">Enter Adhar number:<span>*</span></label>
+          <input type="text" name="adhar" placeholder="xxxx-xxxx-xxxx"><br>
+        </form>
 
       </div>
+
+      <div class="wrapper">
+
+        <form>
+          <h2>Job Information</h2>
+
+          <label for="ql">Enter Qualification:<span>*</span></label>
+          <input type="text" name="ql" placeholder="eg: B.Sc, M.Sc, etc"><br>
+
+          <label for="job">Enter Work Field:<span>*</span></label>
+          <input type="text" name="Job" placeholder="eg: IT,Former,Political,etc"><br>
+
+          <label for="jobPosition">Enter Posititon in That Field:</label>
+          <input type="text" name="jobPosition" placeholder="eg: HR,Developer,etc"><br>
+
+          <label for="salary">Enter Average Salary (P/Month):<span>*</span></label>
+          <input type="text" name="salary" placeholder="eg: 1,00,000"><br>
+
+          <label for="jsd">Enter the Join Date On that Work:<span>*</span></label>
+          <input type="text" name="jsd" placeholder="eg: yyyy-mm-dd"><br>
+
+        </form>
+      </div>
+
+      <div class="wrapper">
+        <form action="">
+
+          <h2>Bank Information</h2>
+
+          <label for="acctno">Enter Account Number:<span>*</span></label>
+          <input type="text" name="acctno" placeholder="Account No"><br>
+
+          <label for="country">Enter the Country:<span>*</span></label>
+          <input type="text" name="country" placeholder="eg: India, USA, etc"><br>
+
+          <label for="bankName">Enter the Bank Name:<span>*</span></label>
+          <input type="text" name="bankName" placeholder="eg: Indian Bank, SBI, etc"><br>
+
+          <label for="bankBranch">Enter the Branch:<span>*</span></label>
+          <input type="text" name="bankBranch" placeholder="eg: kandachipuram, villupuram, etc"><br>
+
+          <label for="acctSt">Select the Account Status:<span>*</span></label>
+          <select name="acctSt">
+            <option >--select---</option>
+            <option value="active">Active</option>
+            <option value="inactive">In Active</option>
+          </select><br>
+
+        </form>
+        <button class="Register">Register</button>
+      </div>
+
+      
 
     </body>
 

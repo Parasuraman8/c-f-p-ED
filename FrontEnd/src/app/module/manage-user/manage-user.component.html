@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ED Home</title>
+    </head>
+
+    <header>
+
+      <div class="logo">
+          <a routerLink = '/home'><img src="assets/ED.png" alt="ED"></a>
+        
+      </div>
+
+
+      <nav>
+
+          <ul>
+             
+            <button (click) = "BackPage()" class="backbtn">Back</button>
+
+          </ul>
+
+          
+      </nav>
+
+  </header>
+
+
+    <body>
+
+        <div class="profile">
+
+          <button (click)="showForm()" class="add">Create</button>
+            <table >
+             
+              <tbody>
+                <tr>
+                  <th>ID</th>
+                  <th>name</th>
+                  <th>Gender</th>
+                  <th>Date Of Brith</th>
+                  <th>Phone Number</th>
+                  <th>gmail </th>
+                  <th>No Of Row </th>
+                  <th>5</th>
+                  </tr>
+                  <tr>
+                    
+                    <td>EDUID01</td>
+                    <td>parasuraman</td>
+                    <td>Male</td>
+                    <td >27-09-2003</td>
+                    <td>8825893416</td>
+                    <td >vishnuparasu&@gamil.com</td>
+                    <td ><button  class="view" (click) = "view('eduid01')">View & Edit</button></td>
+                    <td ><button class="Remove" (click) = "remove('eduid01')">Remove</button></td>
+                    
+                  </tr>  
+                
+                
+                  </tbody>
+            </table>
+            <button class="pre">Previous</button>
+            <button class="nex">Next</button>
+    
+          </div>
+      </body>
+
+       <footer>
+
+          <p>&copy; <b> Enforcement Directorate. </b> <br>All rights reserved. <br> <br> <u> Developer Info</u> <br> <br>Parasuraman D <br> Java Developer at algoriant
+          <br> Vishnuparasu7@gmail.com
+          <br> www.algoriant.com <br> [ any bug message karo ]</p>
+  
+          </footer>
+  
+  </html>
+  

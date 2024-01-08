@@ -12,37 +12,37 @@ public class EdUserPaymentEntity {
 
     @Id
     @Column(name = "eduid_sender")
-    String eduidSender;
+    private String eduidSender;
 
     @Column(name = "eduid_recevier")
-    String eduidRecevier;
+    private String eduidRecevier;
 
     @Column(name = "sender_acct_no")
-    String senderAcctNo;
+    private long senderAcctNo;
 
     @Column(name = "recevier_acct_no")
-    String RecevierAcctNo;
+    private long RecevierAcctNo;
 
     @Column(name = "amount")
-    long amount;
+    private long amount;
 
     @Column(name = "date_and_time")
-    Date dateAndTime;
+    private Date dateAndTime;
 
     @Column(name = "is_legal")
-    boolean isLegal;
+    private String isLegal;
 
     @Column(name = "bank_name_sender")
-    String bankNameSender;
+    private String bankNameSender;
 
     @Column(name = "bank_name_reciver")
-    String bankNameReciver;
+    private String bankNameReciver;
 
     @Column(name = "bank_country_sender")
-    String bankCountrySender;
+    private String bankCountrySender;
 
     @Column(name = "bank_country_rece")
-    String bankCountryReciver;
+    private String bankCountryReciver;
 
 
     public String getEduidSender() {
@@ -61,19 +61,19 @@ public class EdUserPaymentEntity {
         this.eduidRecevier = eduidRecevier;
     }
 
-    public String getSenderAcctNo() {
+    public long getSenderAcctNo() {
         return senderAcctNo;
     }
 
-    public void setSenderAcctNo(String senderAcctNo) {
+    public void setSenderAcctNo(long senderAcctNo) {
         this.senderAcctNo = senderAcctNo;
     }
 
-    public String getRecevierAcctNo() {
+    public long getRecevierAcctNo() {
         return RecevierAcctNo;
     }
 
-    public void setRecevierAcctNo(String recevierAcctNo) {
+    public void setRecevierAcctNo(long recevierAcctNo) {
         RecevierAcctNo = recevierAcctNo;
     }
 
@@ -93,12 +93,12 @@ public class EdUserPaymentEntity {
         this.dateAndTime = dateAndTime;
     }
 
-    public boolean isLegal() {
+    public String getIsLegal() {
         return isLegal;
     }
 
-    public void setLegal(boolean legal) {
-        isLegal = legal;
+    public void setIsLegal(String isLegal) {
+        this.isLegal = isLegal;
     }
 
     public String getBankNameSender() {

@@ -8,14 +8,13 @@ import com.vishnuparasu.EnforcementDirectorate.repository.EdRolesRepo;
 import com.vishnuparasu.EnforcementDirectorate.repository.EdUserCredentialRepo;
 import com.vishnuparasu.EnforcementDirectorate.service.EdAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class EdAdminServiceImpl implements EdAdminService {
@@ -31,6 +30,8 @@ public class EdAdminServiceImpl implements EdAdminService {
 
     @Autowired
     private EdRolesRepo edRolesRepo;
+
+
 
     @Override
     public EdAdminEntity getAdmin(String edaid) {
@@ -72,6 +73,40 @@ public class EdAdminServiceImpl implements EdAdminService {
         EdUserCredentials userCredentials =  edAdminEntity.getEdUserCredentials().iterator().next();
         userCredentials.setPassword(passwordEncoder.encode(userCredentials.getPassword()));
         return edAdminRepo.save(edAdminEntity);
+    }
+
+    @Bean
+    public CommandLineRunner roleCrete() {
+        return args -> {
+            if (!edRolesRepo.findById("EDA").isPresent()) {
+                EdRolesEntity admin = new EdRolesEntity();
+                admin.setRole("EDA");
+                admin.setRoleDesc("ADMIN");
+                edRolesRepo.save(admin);
+
+            }
+        };
+    }
+
+    @Bean
+    public CommandLineRunner rootUser() {
+        return  args -> {
+            if (!edUserCredentialRepo.findByuserName("root").isPresent()) {
+                EdUserCredentials rootUser = new EdUserCredentials();
+                Set<EdRolesEntity> roles = new HashSet<>();
+                EdRolesEntity rolesEntity = new EdRolesEntity();
+
+                rolesEntity.setRoleDesc("admin");
+                rolesEntity.setRole("EDA");
+
+                roles.add(rolesEntity);
+                rootUser.setEdRolesModels(roles);
+                rootUser.setUserName("root");
+                rootUser.setPassword(passwordEncoder.encode("root"));
+
+                edUserCredentialRepo.save(rootUser);
+            }
+        };
     }
 
     @Override

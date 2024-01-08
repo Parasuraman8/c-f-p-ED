@@ -9,16 +9,20 @@
     <header>
 
       <div class="logo">
-          <a href="#"><img src="assets/ED.png" alt="logo"></a>
-        
+          <a routerLink = '/home'><img src="assets/ED.png" alt="Ed" ></a>
       </div>
      
-
+      <h1> <b class="e">Enfor</b> <b class="d">cement</b>  <b class="e"> Direc</b> <b class="d">torate</b></h1>
+      
       <nav>
           <ul>
-             
-           
 
+            <li><a routerLink="/home">Home</a></li>
+            <li><a routerLink="/home/Edu-page" class="active">Profile</a></li>
+            <li><a routerLink="/home/Edu-page/Bank-info">Bank</a></li>
+            <li><a routerLink="User-Payment">Payment</a></li>
+            <button class="signout" (click) = "logout()">Sign Out</button>           
+             
           </ul>
 
           
@@ -29,7 +33,78 @@
 
     <body>
 
-   <p>user works!</p>
+      <div class="profile">
+
+        <table>
+          <tbody>
+            <tr>
+              <td>ID</td>
+              <td>EDUID01</td>
+            </tr>
+            <tr>
+              <td class="coller">name</td>
+              <td class="coller">parasuraman</td>
+            </tr>
+            <tr>
+              <td>Gender</td>
+              <td>Male</td>
+            </tr>
+            <tr>
+              <td class="coller">Date Of Brith</td>
+              <td class="coller">27-09-2003</td>
+            </tr>
+            <tr>
+              <td>Phone Number</td>
+              <td>8825893416</td>
+            </tr>
+            <tr>
+              <td class="coller">gmail</td>
+              <td class="coller">vishnuparasu&@gamil.com</td>
+            </tr>
+            <tr>
+              <td>Father Name</td>
+              <td>Parasuraman</td>
+            </tr>
+            <tr>
+              <td class="coller">Community</td>
+              <td class="coller">BC</td>
+            </tr>
+            <tr>
+              <td>religion</td>
+              <td>hindu</td>
+            </tr>
+            <tr>
+              <td class="coller">Adhar Number</td>
+              <td class="coller">xxxx xxxx xxxx</td>
+            </tr>
+            <tr>
+              <td>address</td>
+              <td>pandurangan kovil st veerangipuram kandachipuram villupuram dist</td>
+            </tr>
+            <tr>
+              <td class="coller">qulalification</td>
+              <td class="coller">B.Sc, M.Sc, M.phil, Phd Computer Science</td>
+            </tr>
+            <tr>
+              <td>Job</td>
+              <td>IT induestry Employee</td>
+            </tr>
+            <tr>
+              <td class="coller">Jop POsition</td>
+              <td class="coller">Developer</td>
+            </tr>
+            <tr>
+              <td>salary</td>
+              <td>1000000</td>
+            </tr>
+            <tr>
+              <td class="coller">Joining date of Job</td>
+              <td class="coller">24-05-2024</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
 
     </body>
 

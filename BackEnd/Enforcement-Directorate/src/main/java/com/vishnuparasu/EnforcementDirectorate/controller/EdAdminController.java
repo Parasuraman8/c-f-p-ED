@@ -14,6 +14,7 @@ import java.util.List;
 @PreAuthorize("hasAnyAuthority('EDA')")
 @RequestMapping(value = "/ED/AdminController")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class EdAdminController {
 
     @Autowired
