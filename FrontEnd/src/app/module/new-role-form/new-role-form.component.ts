@@ -27,6 +27,7 @@ export class NewRoleFormComponent {
     this.service.createRole(this.roleRequest).subscribe(
       (Response)=> {
         alert(Response.role+" was created");
+        this.router.navigate(['/home/Eda-page/Manager/Manage-Role']);
       } , (error)=> {
         alert("error while create Role");
       }

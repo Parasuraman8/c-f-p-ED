@@ -41,7 +41,7 @@ const routes: Routes = [
   { path : 'home',children : [
                           
   { path : 'login', component : LoginFormComponent},
-  { path : 'Edu-page',component : UserHomeComponent,canActivate:[AuthGard]},
+  { path : 'Edu-page',component : UserHomeComponent},
   { path : 'Edu-page',children : [
     { path : 'Bank-info', component : UserBankComponent},
     { path : 'User-Payment', component : UserPaymentComponent},
@@ -51,7 +51,7 @@ const routes: Routes = [
       { path : 'complaints', component : UserComplaintsComponent}
     ],canActivate:[AuthGard]},
   ],canActivate:[AuthGard]}, 
-  { path : 'Edo-page', component : EdoHomeComponent,canActivate:[AuthGard]}, 
+  { path : 'Edo-page', component : EdoHomeComponent}, 
    { path: 'Edo-page', children :[
     { path : 'officer-manager', component : OfficerManagerComponent,canActivate:[AuthGard]},
     { path : 'officer-manager', children : [
@@ -78,7 +78,7 @@ const routes: Routes = [
     { path : 'officer-payments', component : OfficerPaymentComponent,canActivate:[AuthGard]},
     { path : 'Complaints', component : ComplaintsComponent,canActivate:[AuthGard] },
    ]}, 
-  { path : 'Eda-page', component : AdminHomeComponent,canActivate:[AuthGard]}, 
+  { path : 'Eda-page', component : AdminHomeComponent}, 
   { path : 'Eda-page',children : [
     { path : 'Manager', component : AdminManagerComponent ,canActivate:[AuthGard]},
     { path : 'Manager',children : [

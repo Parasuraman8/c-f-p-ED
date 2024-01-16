@@ -40,18 +40,18 @@
           <input class="input-box" name="name" id="name" type="text" placeholder="eg: Ram V" [(ngModel)]="request.name"><br>
 
           <label for="date">Date Of Brith:<span>*</span></label>
-          <input type="text" name="date" placeholder="eg: yyyy-mm-dd" [(ngModel)]="request.dob" ><br>
+          <input type="text" name="dob" placeholder="eg: yyyy-mm-dd" [(ngModel)]="request.dob" ><br>
 
           <label for="gender">Gender :</label>
           <select id="gender" name="gender" [(ngModel)]="request.gender">
             <option>--select---</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Others">Others</option>
+            <option [ngValue]="'Male'">Male</option>
+            <option [ngValue]="'Female'">Female</option>
+            <option [ngValue]="'Others'">Others</option>
           </select><br>
 
           <label for="phone">Phone Number:<span>*</span> </label>
-          <input type="text" name="phone" id="phone" placeholder="eg: 10 digit no" [(ngModel)]="request.pho"><br>
+          <input type="text" name="pho" id="phone" placeholder="eg: 10 digit no" [(ngModel)]="request.pho"><br>
 
           <label for="gmail">Gmail:<span>*</span></label>
           <input type="email" name="gmail" id="none" required placeholder="eg: vishnu@gmail.com" [(ngModel)]="request.gmail"><br>
@@ -60,7 +60,7 @@
           <input type="text" name="fname" placeholder="eg: Vishnu" [(ngModel)]="request.fname"><br>
 
           <label for="adhar">Adhar number:<span>*</span></label>
-          <input type="text" name="adhar" placeholder="xxxx-xxxx-xxxx" [(ngModel)]="request.adharNumber"><br>
+          <input type="text" name="adharNumber" placeholder="xxxx-xxxx-xxxx" [(ngModel)]="request.adharNumber"><br>
         </form>
 
       </div>
@@ -71,10 +71,10 @@
           <h2>Job Information</h2>
 
           <label for="ql">Qualification:<span>*</span></label>
-          <input type="text" name="ql" placeholder="eg: B.Sc, M.Sc, etc" [(ngModel)]="request.qualification"><br>
+          <input type="text" name="qualification" placeholder="eg: B.Sc, M.Sc, etc" [(ngModel)]="request.qualification"><br>
 
           <label for="job">Work Field:<span>*</span></label>
-          <input type="text" name="Job" placeholder="eg: IT,Former,Political,etc" [(ngModel)]="request.job"><br>
+          <input type="text" name="job" placeholder="eg: IT,Former,Political,etc" [(ngModel)]="request.job"><br> 
 
           <label for="jobPosition">Posititon in That Field:</label>
           <input type="text" name="jobPosition" placeholder="eg: HR,Developer,etc" [(ngModel)]="request.jobPosition"><br>

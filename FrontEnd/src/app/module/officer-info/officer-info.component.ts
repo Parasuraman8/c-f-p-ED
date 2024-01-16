@@ -30,7 +30,6 @@ export class OfficerInfoComponent {
     this.service.getOfficerByEduId(this.officerInfo).subscribe(
       (respo)=> {
         this.request = respo;
-        console.log( "response info : ",this.request);
         
       }
     );

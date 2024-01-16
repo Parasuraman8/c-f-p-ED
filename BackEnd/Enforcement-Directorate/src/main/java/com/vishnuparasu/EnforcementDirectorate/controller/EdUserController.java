@@ -38,7 +38,7 @@ public class EdUserController {
         return new ResponseEntity<>(edUserService.getUser(eduid),HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyAuthority('EDA','EDO','EDU')")
+    @PreAuthorize("hasAnyAuthority('EDA','EDO')")
     @GetMapping("/getAllUser")
     public ResponseEntity<List<EdUserEntity>>getAllUser() {
         return new ResponseEntity<>(edUserService.getAllUser(),HttpStatus.OK);
@@ -50,27 +50,27 @@ public class EdUserController {
         return new ResponseEntity<>(edUserService.getUserBank(eduid),HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyAuthority('EDA','EDO','EDU')")
+    @PreAuthorize("hasAnyAuthority('EDA','EDO')")
     @GetMapping("/getAllBank")
     public ResponseEntity<List<EdUserBankEntity>> getAllBank() {
         return new ResponseEntity<>(edUserService.getAllUserBank(),HttpStatus.OK);
     }
 
 
-    @PreAuthorize("hasAnyAuthority('EDA','EDO','EDU')")
+    @PreAuthorize("hasAnyAuthority('EDA','EDO')")
     @PutMapping("/modifyUser")
     public ResponseEntity<EdUserEntity> modifyUser(@RequestParam("eduid") String eduid, @RequestBody EdUserEntity edUserEntity) {
         return new ResponseEntity<>(edUserService.modifyUser(edUserEntity,eduid),HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyAuthority('EDO','EDU')")
+    @PreAuthorize("hasAuthority('EDO')")
     @PutMapping("/modifyPayment")
     public ResponseEntity<EdUserPaymentEntity>modifyPayment(@RequestParam("value") String value , @RequestParam("id") int id) {
         return new ResponseEntity<>(edUserService.modifyPayment(value,id),HttpStatus.OK);
     }
 
 
-    @PreAuthorize("hasAnyAuthority('EDA','EDO','EDU')")
+    @PreAuthorize("hasAnyAuthority('EDA','EDO')")
     @DeleteMapping("/deleteEdUser")
     public ResponseEntity<String> deleteEdUser(@RequestParam("eduid") String eduid){
         return new ResponseEntity<>(edUserService.deleteUser(eduid),HttpStatus.OK);
@@ -94,7 +94,7 @@ public class EdUserController {
         return new ResponseEntity<>(edUserService.getRecevierDetail(recevierEduid),HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyAuthority('EDA','EDO','EDU')")
+    @PreAuthorize("hasAuthority('EDU')")
     @GetMapping("/userComplainList")
     public  ResponseEntity<List<EdUserPaymentEntity>> getUserComplaintList(@RequestParam("eduid") String eduid) {
         return new ResponseEntity<>(edUserService.getUserComplaint(eduid),HttpStatus.OK);

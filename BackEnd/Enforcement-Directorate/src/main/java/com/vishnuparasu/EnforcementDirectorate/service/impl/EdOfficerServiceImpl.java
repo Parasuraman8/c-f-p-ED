@@ -53,12 +53,12 @@ public class EdOfficerServiceImpl implements EdOfficerService {
             officerEntity.setFname(edOfficerEntity.getFname());
             officerEntity.setAdharNumber(edOfficerEntity.getAdharNumber());
             officerEntity.setJob(edOfficerEntity.getJob());
-            officerEntity.setJobPosition(officerEntity.getJobPosition());
-            officerEntity.setSalary(officerEntity.getSalary());
-            officerEntity.setPho(officerEntity.getPho());
-            officerEntity.setQualification(officerEntity.getQualification());
-            officerEntity.setJsd(officerEntity.getJsd());
-            officerEntity.setGmail(officerEntity.getGmail());
+            officerEntity.setJobPosition(edOfficerEntity.getJobPosition());
+            officerEntity.setSalary(edOfficerEntity.getSalary());
+            officerEntity.setPho(edOfficerEntity.getPho());
+            officerEntity.setQualification(edOfficerEntity.getQualification());
+            officerEntity.setJsd(edOfficerEntity.getJsd());
+            officerEntity.setGmail(edOfficerEntity.getGmail());
             return edOfficerRepo.save(officerEntity);
         }
         return null;

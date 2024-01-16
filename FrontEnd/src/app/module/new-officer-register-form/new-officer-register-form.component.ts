@@ -29,6 +29,8 @@ export class NewOfficerRegisterFormComponent {
   createOfficer() {
     this.servie.createOfficer(this.officerRequest).subscribe(
       (respo)=> {
+        alert("Officer Created! \nUsername : "+respo.edoid+"\nPassword : "+respo.dob);
+        console.log(respo);
         
     if(this.st.getRole()=='EDA') {
       this.router.navigate(['/home/Eda-page/Manager/Manage-Officer']);
@@ -36,7 +38,6 @@ export class NewOfficerRegisterFormComponent {
     } else if( this.st.getRole()=='EDO') {
       this.router.navigate(['/home/Edo-page/officer-manager/Manage-Officer']);
     }
-        console.log(respo);
         
       },(error) => {
         console.log(error);
