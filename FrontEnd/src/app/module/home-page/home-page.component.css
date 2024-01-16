@@ -48,7 +48,7 @@ nav a {
 
 
 nav ul li :hover {
-    color: green;
+    color: red;
     text-underline-offset: auto;
 }
 
@@ -108,7 +108,8 @@ footer {
   .imagebanner {
     width: 100%; 
     height: auto; 
-    border: 10px solid #333;
+    border-radius: 25px;
+    border: 2px solid #333;
   }
 
   .wrapper {
@@ -139,5 +140,7 @@ footer {
     margin: 10px 10px 10px;
   }
 
-
+footer .mail{
+  text-decoration: none;
+}
  

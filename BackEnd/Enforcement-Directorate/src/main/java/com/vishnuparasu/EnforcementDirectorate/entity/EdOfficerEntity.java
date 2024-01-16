@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,13 +37,6 @@ public class EdOfficerEntity implements Serializable {
 
     @Column(name = "f_name")
     private String fname;
-
-    @Column(name = "community")
-    private String community;
-
-    @Column(name = "religion")
-    private String religion;
-
     @Column(name = "adhar_number")
     private String adharNumber;
 
@@ -133,22 +126,6 @@ public class EdOfficerEntity implements Serializable {
 
     public void setFname(String fname) {
         this.fname = fname;
-    }
-
-    public String getCommunity() {
-        return community;
-    }
-
-    public void setCommunity(String community) {
-        this.community = community;
-    }
-
-    public String getReligion() {
-        return religion;
-    }
-
-    public void setReligion(String religion) {
-        this.religion = religion;
     }
 
     public String getAdharNumber() {

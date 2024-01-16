@@ -5,19 +5,22 @@ import com.vishnuparasu.EnforcementDirectorate.service.impl.EdOfficerServiceImpl
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@PreAuthorize("hasAnyAuthority('EDA','EDO')")
 @RequestMapping(value = "/ED/OfficerController")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class EdOfficerController {
 
     @Autowired
     EdOfficerServiceImpl edOfficerService;
 
+    @GetMapping("/totalNumberOfRow")
+    public ResponseEntity<String>getNoOfRow() {
+        return new ResponseEntity<>(edOfficerService.getNoRow(),HttpStatus.OK);
+    }
     @GetMapping("/getOfficer")
     public ResponseEntity<EdOfficerEntity> getOfficer(@RequestParam("edoid") String edoid) {
         return new ResponseEntity<>(edOfficerService.getOfficer(edoid),HttpStatus.OK);

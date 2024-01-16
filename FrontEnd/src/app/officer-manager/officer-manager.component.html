@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ED Home</title>
+    </head>
+
+    <header>
+
+      <div class="logo">
+          <a routerLink = '/home'><img src="assets/ED.png" alt="ED"></a>
+        
+      </div>
+    
+      <nav>
+          <ul>
+            <li><a routerLink="/home">Home</a></li>
+             <li><a routerLink="/home/Edo-page" >Profile</a></li>
+             <li><a class="active" routerLink="/home/Edo-page/officer-manager">Manage</a></li>
+             <li><a routerLink="/home/Edo-page/officer-payments">Payments</a></li>
+             <li><a routerLink="/home/Edo-page/Complaints">Complaints</a></li>
+           <button class="signout" (click) = "logout()">Sing Out</button>
+          </ul>
+
+          
+      </nav>
+
+  </header>
+
+
+    <body>
+
+      
+
+       <div class="dashbord">
+
+       <ul>
+            <li><a routerLink="/home/Edo-page/officer-manager/Manage-User"><div>User</div></a></li>
+            <li><a routerLink="/home/Edo-page/officer-manager/Manage-Officer"><div>Officer</div></a></li>
+            <li><a routerLink="/home/Edo-page/officer-manager/Manage-Creden"><div>Credential</div></a></li>
+            <li><a routerLink="/home/Edo-page/officer-manager/Manage-Payment"><div>Bank</div></a></li>
+        </ul>
+
+       </div>
+
+    </body>
+
+       <footer>
+
+          <p>&copy; <b> Enforcement Directorate. </b> <br>All rights reserved. <br> <br> <u> Developer Info</u> <br> <br>Parasuraman D <br> Java Developer at algoriant
+          <br> Vishnuparasu7@gmail.com
+          <br> www.algoriant.com <br></p>
+  
+          </footer>
+  
+  </html>
+  

@@ -9,7 +9,7 @@
  <header>
 
       <div class="logo">
-          <a href="#"><img src="assets/ED.png" alt="logo"></a>
+          <a routerLink = '/home'><img src="assets/ED.png" alt="ED"></a>
         
       </div>
 
@@ -20,9 +20,9 @@
                     <li><a routerLink = '/home' >Home</a></li>
                     <li><a routerLink = '/home/service' class="active">Service</a></li>
                     <li><a routerLink = '/home/contact' >Contact</a></li>
-                    <button (click) = "loginForm()" class="loginbtn">Sign In</button>
-
-
+                    <button *ngIf= "!isLogin()" (click) = "loginForm()" class="loginbtn">Sign In</button>
+                    <button *ngIf ="isLogin()" (click) = "goProfile()"  class="loginbtn">Profile</button>
+                
                 </ul>
 
 
@@ -156,7 +156,7 @@
 
         <p>&copy; <b> Enforcement Directorate. </b> <br>All rights reserved. <br> <br> <u> Developer Info</u> <br> <br>Parasuraman D <br> Java Developer at algoriant
         <br> Vishnuparasu7@gmail.com
-        <br> www.algoriant.com <br> [ any bug message karo ]</p>
+        <br> www.algoriant.com <br></p>
 
         </footer>
 

@@ -1,18 +1,18 @@
 package com.vishnuparasu.EnforcementDirectorate.service.impl;
 
-import com.vishnuparasu.EnforcementDirectorate.entity.EdUserBankEntity;
-import com.vishnuparasu.EnforcementDirectorate.entity.EdUserCredentials;
-import com.vishnuparasu.EnforcementDirectorate.entity.EdUserEntity;
+import com.vishnuparasu.EnforcementDirectorate.entity.*;
 import com.vishnuparasu.EnforcementDirectorate.repository.EdUserBankRepo;
 import com.vishnuparasu.EnforcementDirectorate.repository.EdUserCredentialRepo;
+import com.vishnuparasu.EnforcementDirectorate.repository.EdUserPaymentRepo;
 import com.vishnuparasu.EnforcementDirectorate.repository.EdUserRepo;
 import com.vishnuparasu.EnforcementDirectorate.service.EdUserService;
-import org.aspectj.weaver.ast.Literal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +30,11 @@ public class EdUserServiceImpl implements EdUserService {
     private EdUserCredentialRepo edUserCredentialRepo;
 
     @Autowired
+    private EdUserPaymentRepo edUserPaymentRepo;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
+
 
     @Override
     public EdUserEntity getUser(String eduid) {
@@ -52,7 +56,6 @@ public class EdUserServiceImpl implements EdUserService {
             EdUserEntity modifyUser = userEntity.get();
             modifyUser.setName(edUserEntity.getName());
             modifyUser.setGmail(edUserEntity.getGmail());
-            modifyUser.setCommunity(edUserEntity.getCommunity());
             modifyUser.setDob(edUserEntity.getDob());
             modifyUser.setAdharNumber(edUserEntity.getAdharNumber());
             modifyUser.setAddress(edUserEntity.getAddress());
@@ -83,9 +86,15 @@ public class EdUserServiceImpl implements EdUserService {
 
     @Override
     public EdUserEntity createUser(EdUserEntity edUserEntity) {
-        EdUserCredentials userCredentials =  edUserEntity.getEdUserCredentials().iterator().next();
-        userCredentials.setPassword(passwordEncoder.encode(userCredentials.getPassword()));
-        return edUserRepo.save(edUserEntity);
+        EdUserEntity entity = edUserEntity;
+        entity.setEduid(getNoRow());
+        EdUserCredentials userCredentials =  entity.getEdUserCredentials().iterator().next();
+        userCredentials.setPassword(passwordEncoder.encode(entity.getDob().toString()));
+        userCredentials.setUserName(getNoRow());
+        EdRolesEntity roles  = userCredentials.getEdRolesModels().iterator().next();
+        roles.setRole("EDU");
+        roles.setRoleDesc("USER");
+        return edUserRepo.save(entity);
     }
 
 
@@ -100,6 +109,70 @@ public class EdUserServiceImpl implements EdUserService {
         List<EdUserBankEntity> listOfAllBank = new ArrayList<>();
         edUserBankRepo.findAll().forEach(listOfAllBank::add);
         return listOfAllBank;
+    }
+
+    @Override
+    public EdUserPaymentEntity createUserPatment(EdUserPaymentEntity edUserPaymentEntity) {
+        LocalDateTime curentDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formatted = curentDateTime.format(formatter);
+        edUserPaymentEntity.setDateAndTime(formatted);
+        EdUserBankEntity edUserBankEntity = edUserBankRepo.findById(edUserPaymentEntity.getSenderAcctNo()).get();
+        edUserBankEntity.setTotalAmount(edUserBankEntity.getTotalAmount()-edUserPaymentEntity.getAmount());
+        edUserBankRepo.save(edUserBankEntity);
+        EdUserBankEntity recevierBankEntity = edUserBankRepo.findById(edUserPaymentEntity.getRecevierAcctNo()).get();
+        recevierBankEntity.setTotalAmount(recevierBankEntity.getTotalAmount()+edUserPaymentEntity.getAmount());
+        edUserBankRepo.save(recevierBankEntity);
+        return  edUserPaymentRepo.save(edUserPaymentEntity);
+
+
+    }
+
+    @Override
+    public List<EdUserPaymentEntity> getSenderDetail(String senderEduid) {
+        List<EdUserPaymentEntity> senderDetail = new ArrayList<>();
+        edUserPaymentRepo.findSenderByEduid(senderEduid).forEach(senderDetail::add);
+        return senderDetail;
+    }
+
+    @Override
+    public List<EdUserPaymentEntity> getRecevierDetail(String recevierEduid) {
+        List<EdUserPaymentEntity> recevierDetail = new ArrayList<>();
+        edUserPaymentRepo.findRecevierByEduid(recevierEduid).forEach(recevierDetail::add);
+        return recevierDetail;
+    }
+
+    @Override
+    public List<EdUserPaymentEntity> getAllPatment() {
+        List<EdUserPaymentEntity> edUserPaymentEntityList = new ArrayList<>();
+        edUserPaymentRepo.findAll().forEach(edUserPaymentEntityList::add);
+        return edUserPaymentEntityList;
+    }
+
+    @Override
+    public List<EdUserPaymentEntity> getUserComplaint(String eduid) {
+        List<EdUserPaymentEntity> userComplaintList = new ArrayList<>();
+        edUserPaymentRepo.findUserComplaintSenderOrReciever(eduid).forEach(userComplaintList::add);
+        return userComplaintList;
+    }
+
+    @Override
+    public List<EdUserPaymentEntity> getAllCompliants(String trueOrFalse) {
+        List<EdUserPaymentEntity> listOfEdUserPayment = new ArrayList<>();
+        edUserPaymentRepo.findAllByCompliantBoolean(trueOrFalse).forEach(listOfEdUserPayment::add);
+        return listOfEdUserPayment;
+    }
+
+    @Override
+    public EdUserPaymentEntity modifyPayment(String value, int id) {
+        EdUserPaymentEntity entity = edUserPaymentRepo.findById(id).get();
+        entity.setIsLegal(value);
+        return  edUserPaymentRepo.save(entity);
+    }
+
+    @Override
+    public String getNoRow() {
+        return "EDUID"+(edUserRepo.count()+01);
     }
 
 }

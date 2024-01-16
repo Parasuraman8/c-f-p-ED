@@ -101,15 +101,16 @@ body {
     border: none;
     outline: none;
     border: 2px solid white;
-    border-radius: 40px;
+    border-radius: 12px;
     padding: 20px 45px 20px 20px;
-
+    
+   
 }
 
 .input-box:hover {
 
-    border: 3px solid green;
-    border-radius: 40px;
+    border: 2px solid green;
+    border-radius: 12px;
 }
 
 .input-box input::placeholder {
@@ -161,4 +162,29 @@ body {
     color : red ;
 }
 
+
+.loading-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 999;
+    
+  }
+
+  .loading-overlay h2 {
+    color: black;
+  }
+  
+  .gif {
+    width: 400px;
+    height: auto;
+    margin-bottom: 20px;
+  }
 

@@ -41,7 +41,7 @@ nav a {
 }
 
 nav ul li :hover {
-    color: green;
+    color: red;
     text-underline-offset: auto;
 }
 

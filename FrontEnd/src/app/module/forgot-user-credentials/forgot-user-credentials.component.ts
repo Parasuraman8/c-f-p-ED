@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MODIFY_USER_CREDENTIAL } from 'src/app/comman/constant';
 
 @Component({
   selector: 'app-forgot-user-credentials',
@@ -8,13 +10,9 @@ import { Router } from '@angular/router';
 })
 export class ForgotUserCredentialsComponent {
 
-  constructor (private router : Router) {}
+  constructor (private http : HttpClient,private router : Router) {}
 
   backToSignIN() {
     this.router.navigate(['/home/login']);
   }
-
-  selectedOption : string = 'username';
- 
-
 }

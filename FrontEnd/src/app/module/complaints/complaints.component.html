@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ED Home</title>
+    </head>
+
+    <header>
+
+      <div class="logo">
+          <a routerLink = '/home'><img src="assets/ED.png" alt="Enforcement Directorate"></a>
+        
+      </div>
+      
+      <h1> <b class="e">Enfor</b> <b class="d">cement</b>  <b class="e"> Direc</b> <b class="d">torate</b></h1>
+
+      <nav>
+          <ul>
+             <li><a routerLink="/home">Home</a></li>
+             <li><a routerLink="/home/Edo-page" >Profile</a></li>
+             <li><a routerLink="/home/Edo-page/officer-manager">Manage</a></li>
+             <li><a routerLink="/home/Edo-page/officer-payments">Payments</a></li>
+             <li><a class="active" routerLink="/home/Edo-page/Complaints">Complaints</a></li>
+           <button class="signout" (click) = "logout()">Sing Out</button>
+
+          </ul> 
+      </nav>
+
+  </header>
+
+
+    <body>
+
+      <div class="profile">
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Payment Id</th>
+              <th>Sender ID</th>
+              <th>Recevier ID</th>
+              <th>Sender Acct No</th>
+              <th>Recevier Acct No</th>
+              <th>Amount</th>
+              <th>Date </th>
+              <th>Sender Bank Name</th>
+              <th>Recevier Bank Name</th>
+              <th>sender Bank Country</th>
+              <th>Recevier Bank Country</th>
+              <th>---</th>
+              </tr>
+              <tr>
+                <tr  *ngFor="let detail  of getDisplayData()">
+                  <table>{{detail.paymentId}}</table>
+                  <td>{{detail.eduidSender}}</td>
+                  <td>{{detail.eduidRecevier}}</td>
+                  <td>{{detail.senderAcctNo}}</td>
+                  <td>{{detail.recevierAcctNo}}</td>
+                  <td>{{detail.amount}}</td>
+                  <td>{{detail.dateAndTime}}</td>
+                  <td>{{detail.bankNameSender}}</td>
+                  <td>{{detail.bankNameReciver}}</td>
+                  <td>{{detail.bankCountrySender}}</td>
+                  <td>{{detail.bankCountryReciver}}</td>
+                <td><Button (click)="removeFromComplaint(detail.paymentId)" class="Remove">Remove</Button></td>
+              </tr>
+              
+          </tbody>
+        </table>
+        <button (click)="previousPage()" [disabled]="currentPage === 1" class="pre">Previous</button>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages()" class="nex">Next</button>
+      </div>
+
+    </body>
+
+       <footer>
+
+          <p>&copy; <b> Enforcement Directorate. </b> <br>All rights reserved. <br> <br> <u> Developer Info</u> <br> <br>Parasuraman D <br> Java Developer at algoriant
+          <br> Vishnuparasu7@gmail.com
+          <br> www.algoriant.com <br></p>
+  
+          </footer>
+  
+  </html>
+  

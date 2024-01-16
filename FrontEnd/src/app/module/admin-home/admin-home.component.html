@@ -9,15 +9,17 @@
     <header>
 
       <div class="logo">
-          <a href="#"><img src="assets/ED.png" alt="logo"></a>
+          <a routerLink = '/home'><img src="assets/ED.png" alt="Enforcement Directorate"></a>
         
       </div>
      
-
-
+      <h1> <b class="e">Enfor</b> <b class="d">cement</b>  <b class="e"> Direc</b> <b class="d">torate</b> ~ <b class="e">Ad</b><b class="d">min</b></h1>
       <nav>
           <ul>
-             
+            <li><a routerLink ='/home' >Home</a></li>
+            <li><a routerLink = '/home/Eda-page' class="active">Profile</a></li>
+            <li><a routerLink = '/home/Eda-page/Manager'>Manage</a></li>
+             <button class="signout" (click) = "logout()">Sign Out</button>
            
           </ul>
 
@@ -29,7 +31,50 @@
 
     <body>
 
-        <p>admin works!</p>
+
+       <img class="root" *ngIf="'root'==username" src="assets/root.jpg" alt="hello" >
+
+        <div *ngIf="'root'!=username" class="profile">
+
+            <table>
+              <tbody>
+                <tr>
+                  <td >ID</td>
+                  <td>{{response.edaid}}</td>
+                </tr>
+                <tr>
+                  <td class="coller">name</td>
+                  <td class="coller">{{response.name}}</td>
+                </tr>
+                <tr>
+                  <td>Gender</td>
+                  <td>{{response.gender}}</td>
+                </tr>
+                <tr>
+                  <td class="coller">Date Of Brith</td>
+                  <td class="coller">{{response.dob}}</td>
+                </tr>
+                <tr>
+                  <td>Phone Number</td>
+                  <td>{{response.pho}}</td>
+                </tr>
+                <tr>
+                  <td class="coller">gmail</td>
+                  <td class="coller">{{response.gmail}}</td>
+                </tr>
+                <tr>
+                  <td>Father Name</td>
+                  <td>{{response.fname}}</td>
+                </tr>
+                <tr>
+                  <td class="coller">Adhar Number</td>
+                  <td class="coller">{{response.adharNumber}}</td>
+                </tr>
+                <tr>
+              </tbody>
+            </table>
+    
+          </div>
 
     </body>
 
@@ -37,7 +82,7 @@
 
           <p>&copy; <b> Enforcement Directorate. </b> <br>All rights reserved. <br> <br> <u> Developer Info</u> <br> <br>Parasuraman D <br> Java Developer at algoriant
           <br> Vishnuparasu7@gmail.com
-          <br> www.algoriant.com <br> [ any bug message karo ]</p>
+          <br> www.algoriant.com <br></p>
   
           </footer>
   

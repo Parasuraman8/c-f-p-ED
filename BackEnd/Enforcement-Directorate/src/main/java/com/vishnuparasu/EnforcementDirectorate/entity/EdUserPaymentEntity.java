@@ -1,48 +1,59 @@
 package com.vishnuparasu.EnforcementDirectorate.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.Date;
+import com.sun.org.glassfish.external.statistics.TimeStatistic;
+
+import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "ed_user_payment")
 public class EdUserPaymentEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "payment_id")
+    private  int paymentId;
     @Column(name = "eduid_sender")
-    String eduidSender;
+    private String eduidSender;
 
     @Column(name = "eduid_recevier")
-    String eduidRecevier;
+    private String eduidRecevier;
 
     @Column(name = "sender_acct_no")
-    String senderAcctNo;
+    private long senderAcctNo;
 
     @Column(name = "recevier_acct_no")
-    String RecevierAcctNo;
+    private long RecevierAcctNo;
 
     @Column(name = "amount")
-    long amount;
+    private long amount;
 
     @Column(name = "date_and_time")
-    Date dateAndTime;
+    private String dateAndTime;
+
+    public int getPaymentId() {
+        return paymentId;
+    }
+
+    public void setPaymentId(int paymentId) {
+        this.paymentId = paymentId;
+    }
 
     @Column(name = "is_legal")
-    boolean isLegal;
+    private String isLegal;
 
     @Column(name = "bank_name_sender")
-    String bankNameSender;
+    private String bankNameSender;
 
     @Column(name = "bank_name_reciver")
-    String bankNameReciver;
+    private String bankNameReciver;
 
     @Column(name = "bank_country_sender")
-    String bankCountrySender;
+    private String bankCountrySender;
 
     @Column(name = "bank_country_rece")
-    String bankCountryReciver;
+    private String bankCountryReciver;
 
 
     public String getEduidSender() {
@@ -61,19 +72,19 @@ public class EdUserPaymentEntity {
         this.eduidRecevier = eduidRecevier;
     }
 
-    public String getSenderAcctNo() {
+    public long getSenderAcctNo() {
         return senderAcctNo;
     }
 
-    public void setSenderAcctNo(String senderAcctNo) {
+    public void setSenderAcctNo(long senderAcctNo) {
         this.senderAcctNo = senderAcctNo;
     }
 
-    public String getRecevierAcctNo() {
+    public long getRecevierAcctNo() {
         return RecevierAcctNo;
     }
 
-    public void setRecevierAcctNo(String recevierAcctNo) {
+    public void setRecevierAcctNo(long recevierAcctNo) {
         RecevierAcctNo = recevierAcctNo;
     }
 
@@ -85,20 +96,20 @@ public class EdUserPaymentEntity {
         this.amount = amount;
     }
 
-    public Date getDateAndTime() {
+    public String getDateAndTime() {
         return dateAndTime;
     }
 
-    public void setDateAndTime(Date dateAndTime) {
+    public void setDateAndTime(String dateAndTime) {
         this.dateAndTime = dateAndTime;
     }
 
-    public boolean isLegal() {
+    public String getIsLegal() {
         return isLegal;
     }
 
-    public void setLegal(boolean legal) {
-        isLegal = legal;
+    public void setIsLegal(String isLegal) {
+        this.isLegal = isLegal;
     }
 
     public String getBankNameSender() {

@@ -8,14 +8,13 @@ import com.vishnuparasu.EnforcementDirectorate.repository.EdRolesRepo;
 import com.vishnuparasu.EnforcementDirectorate.repository.EdUserCredentialRepo;
 import com.vishnuparasu.EnforcementDirectorate.service.EdAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class EdAdminServiceImpl implements EdAdminService {
@@ -24,14 +23,47 @@ public class EdAdminServiceImpl implements EdAdminService {
     private EdAdminRepo edAdminRepo;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
     private EdUserCredentialRepo edUserCredentialRepo;
 
     @Autowired
     private EdRolesRepo edRolesRepo;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Bean
+    public CommandLineRunner roleCrete() {
+        return args -> {
+            if (!edRolesRepo.findById("EDA").isPresent()) {
+                EdRolesEntity admin = new EdRolesEntity();
+                admin.setRole("EDA");
+                admin.setRoleDesc("ADMIN");
+                edRolesRepo.save(admin);
+
+            }
+        };
+    }
+
+    @Bean
+    public CommandLineRunner rootUser() {
+        return  args -> {
+            if (!edUserCredentialRepo.findByuserName("root").isPresent()) {
+                EdUserCredentials rootUser = new EdUserCredentials();
+                Set<EdRolesEntity> roles = new HashSet<>();
+                EdRolesEntity rolesEntity = new EdRolesEntity();
+
+                rolesEntity.setRoleDesc("admin");
+                rolesEntity.setRole("EDA");
+
+                roles.add(rolesEntity);
+                rootUser.setEdRolesModels(roles);
+                rootUser.setUserName("root");
+                rootUser.setPassword(passwordEncoder.encode("root"));
+
+                edUserCredentialRepo.save(rootUser);
+            }
+        };
+    }
     @Override
     public EdAdminEntity getAdmin(String edaid) {
         Optional<EdAdminEntity> oneAdmin = edAdminRepo.findByEduid(edaid);
@@ -59,8 +91,12 @@ public class EdAdminServiceImpl implements EdAdminService {
         if (adminEntity.isPresent()) {
             EdAdminEntity edAdminEntity1 = adminEntity.get();
             edAdminEntity1.setDob(edAdminEntity.getDob());
+            edAdminEntity1.setFname(edAdminEntity.getFname());
+            edAdminEntity1.setAdharNumber(edAdminEntity.getAdharNumber());
             edAdminEntity1.setName(edAdminEntity.getName());
             edAdminEntity1.setGmail(edAdminEntity.getGmail());
+            edAdminEntity1.setPho(edAdminEntity.getPho());
+            edAdminEntity1.setGender(edAdminEntity.getGender());
             edAdminEntity1.setEdUserCredentials(edAdminEntity.getEdUserCredentials());
             return edAdminRepo.save(edAdminEntity1);
         }
@@ -69,9 +105,15 @@ public class EdAdminServiceImpl implements EdAdminService {
 
     @Override
     public EdAdminEntity createAdmin(EdAdminEntity edAdminEntity) {
-        EdUserCredentials userCredentials =  edAdminEntity.getEdUserCredentials().iterator().next();
-        userCredentials.setPassword(passwordEncoder.encode(userCredentials.getPassword()));
-        return edAdminRepo.save(edAdminEntity);
+        EdAdminEntity entity = edAdminEntity;
+        entity.setEdaid(getNoRow());
+        EdUserCredentials userCredentials =  entity.getEdUserCredentials().iterator().next();
+        userCredentials.setPassword(passwordEncoder.encode(entity.getDob().toString()));
+        userCredentials.setUserName(entity.getEdaid());
+        EdRolesEntity roles = userCredentials.getEdRolesModels().iterator().next();
+        roles.setRoleDesc("ADMIN");
+        roles.setRole("EDA");
+        return edAdminRepo.save(entity);
     }
 
     @Override
@@ -93,7 +135,7 @@ public class EdAdminServiceImpl implements EdAdminService {
         if (userCredentials.isPresent()) {
             EdUserCredentials edUserCredentials1 = userCredentials.get();
             edUserCredentials1.setPassword(passwordEncoder.encode(edUserCredentials.getPassword()));
-            edUserCredentials1.setEdRolesModels((Set<EdRolesEntity>) edUserCredentials.getEdRolesModels());
+            edUserCredentials1.setEdRolesModels(edUserCredentials.getEdRolesModels());
             return edUserCredentialRepo.save(edUserCredentials1);
         }
         return null;
@@ -133,5 +175,10 @@ public class EdAdminServiceImpl implements EdAdminService {
             return edRolesRepo.save(modifyRole);
         }
         return null;
+    }
+
+    @Override
+    public String getNoRow() {
+        return "EDAID"+(edAdminRepo.count()+1);
     }
 }

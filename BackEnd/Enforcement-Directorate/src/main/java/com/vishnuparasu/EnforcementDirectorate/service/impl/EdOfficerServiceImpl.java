@@ -1,6 +1,7 @@
 package com.vishnuparasu.EnforcementDirectorate.service.impl;
 
 import com.vishnuparasu.EnforcementDirectorate.entity.EdOfficerEntity;
+import com.vishnuparasu.EnforcementDirectorate.entity.EdRolesEntity;
 import com.vishnuparasu.EnforcementDirectorate.entity.EdUserCredentials;
 import com.vishnuparasu.EnforcementDirectorate.repository.EdOfficerRepo;
 import com.vishnuparasu.EnforcementDirectorate.repository.EdUserCredentialRepo;
@@ -18,13 +19,14 @@ import java.util.Optional;
 public class EdOfficerServiceImpl implements EdOfficerService {
 
     @Autowired
+    EdOfficerRepo edOfficerRepo;
+
+    @Autowired
+    EdUserCredentialRepo edUserCredentialRepo;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
-   private EdOfficerRepo edOfficerRepo;
-
-    @Autowired
-    private EdUserCredentialRepo edUserCredentialRepo;
 
     @Override
     public EdOfficerEntity getOfficer(String edoid) {
@@ -45,7 +47,6 @@ public class EdOfficerServiceImpl implements EdOfficerService {
         if (modifyOfficer.isPresent()) {
             EdOfficerEntity officerEntity = modifyOfficer.get();
             officerEntity.setAddress(edOfficerEntity.getAddress());
-            officerEntity.setCommunity(edOfficerEntity.getCommunity());
             officerEntity.setDob(edOfficerEntity.getDob());
             officerEntity.setName(edOfficerEntity.getName());
             officerEntity.setGender(edOfficerEntity.getGender());
@@ -54,7 +55,6 @@ public class EdOfficerServiceImpl implements EdOfficerService {
             officerEntity.setJob(edOfficerEntity.getJob());
             officerEntity.setJobPosition(officerEntity.getJobPosition());
             officerEntity.setSalary(officerEntity.getSalary());
-            officerEntity.setReligion(edOfficerEntity.getReligion());
             officerEntity.setPho(officerEntity.getPho());
             officerEntity.setQualification(officerEntity.getQualification());
             officerEntity.setJsd(officerEntity.getJsd());
@@ -74,9 +74,21 @@ public class EdOfficerServiceImpl implements EdOfficerService {
 
     @Override
     public EdOfficerEntity createOfficer(EdOfficerEntity edOfficerEntity) {
-        EdUserCredentials userCredentials =  edOfficerEntity.getEdUserCredentials().iterator().next();
-        userCredentials.setPassword(passwordEncoder.encode(userCredentials.getPassword()));
-        return edOfficerRepo.save(edOfficerEntity);
+        EdOfficerEntity entity = edOfficerEntity;
+        entity.setEdoid(getNoRow());
+        EdUserCredentials userCredentials =  entity.getEdUserCredentials().iterator().next();
+        System.out.println(entity.getDob());
+        userCredentials.setPassword(passwordEncoder.encode(entity.getDob().toString()));
+        userCredentials.setUserName(getNoRow());
+        EdRolesEntity roles = userCredentials.getEdRolesModels().iterator().next();
+        roles.setRole("EDO");
+        roles.setRoleDesc("OFFICER");
+        return edOfficerRepo.save(entity);
+    }
+
+    @Override
+    public String getNoRow() {
+        return "EDOID"+(edOfficerRepo.count()+1);
     }
 
 

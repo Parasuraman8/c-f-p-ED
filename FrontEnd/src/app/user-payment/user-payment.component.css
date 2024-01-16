@@ -1,0 +1,132 @@
+header {
+    background-color:#333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 19px;
+}
+
+.logo img {
+    height: 117px;
+    cursor: pointer;
+}
+
+.backbtn {
+    font-family: 'Times New Roman', Times, serif;
+    padding: 5px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration:none;
+    display: inline-block;
+    cursor: pointer;
+    
+  
+    background-color: #e7f0e7; 
+    color: rgb(17, 17, 17);
+  
+    border: 1px solid #4CAF50;
+    border-radius: 5%;
+  
+   
+    transition: background-color 0.3s ease;
+}
+
+.backbtn:hover {
+    color: white;
+    background-color: green;
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-right: 30px;
+    margin-top: 8px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: rgb(250, 246, 246);
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  nav ul li :hover {
+    color: red;
+    text-underline-offset: auto;
+  }
+  
+  nav a.active {
+    color: gold; 
+  }
+  
+  .signout {
+      padding: 5px 15px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration:none;
+      display: inline-block;
+      cursor: pointer;
+      font-family: 'Times New Roman', Times, serif;
+      
+    
+      background-color: #e7f0e7; 
+      color: rgb(17, 17, 17);
+    
+      border: 1px solid #4CAF50;
+      border-radius: 5%;
+    
+     
+      transition: background-color 0.3s ease;
+  
+  }
+      .signout:hover {
+        color: white;
+        background-color: #45a049; 
+      }
+      .dashbord  div{
+        color: rgba(208, 215, 243, 0.973);
+        padding: 100px;
+        border-radius: 20px;
+        background-color: #222;
+      }
+      
+      
+      .dashbord ul li {
+        list-style: none;
+        display: inline-flex;
+        padding: auto;
+        margin: auto;
+      }
+      
+      .dashbord ul li a {
+        font-size: 25px;
+        margin: 100px;
+        text-decoration: none;
+      }
+      
+      .dashbord ul li a :hover {
+        color: white;
+      }
+      .dashbord {
+        font-family: 'Times New Roman', Times, serif;
+      }
+  

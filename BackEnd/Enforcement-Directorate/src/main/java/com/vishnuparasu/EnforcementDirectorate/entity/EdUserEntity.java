@@ -40,12 +40,6 @@ public class EdUserEntity implements Serializable {
     @Column(name = "fname")
     private String fname;
 
-    @Column(name = "community")
-    private String community;
-
-    @Column(name = "religion")
-    private String religion;
-
     @Column(name = "adhar_number")
     private String adharNumber;
 
@@ -139,22 +133,6 @@ public class EdUserEntity implements Serializable {
 
     public void setFname(String fname) {
         this.fname = fname;
-    }
-
-    public String getCommunity() {
-        return community;
-    }
-
-    public void setCommunity(String community) {
-        this.community = community;
-    }
-
-    public String getReligion() {
-        return religion;
-    }
-
-    public void setReligion(String religion) {
-        this.religion = religion;
     }
 
     public String getAdharNumber() {
