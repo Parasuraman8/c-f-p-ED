@@ -1,5 +1,6 @@
 package com.vishnuparasu.EnforcementDirectorate.service;
 
+import com.sun.org.apache.xalan.internal.xsltc.dom.StepIterator;
 import com.vishnuparasu.EnforcementDirectorate.entity.EdUserBankEntity;
 import com.vishnuparasu.EnforcementDirectorate.entity.EdUserEntity;
 import com.vishnuparasu.EnforcementDirectorate.entity.EdUserPaymentEntity;
@@ -24,13 +25,17 @@ public interface EdUserService {
 
     EdUserPaymentEntity createUserPatment(EdUserPaymentEntity edUserPaymentEntity);
 
-    EdUserPaymentEntity getSenderDetail(String senderEduid);
+    List<EdUserPaymentEntity> getSenderDetail(String senderEduid);
 
-    EdUserPaymentEntity getRecevierDetail(String recevierEduid);
+    List<EdUserPaymentEntity> getRecevierDetail(String recevierEduid);
 
     List<EdUserPaymentEntity> getAllPatment();
 
+    List<EdUserPaymentEntity> getUserComplaint(String eduid );
+
     List<EdUserPaymentEntity> getAllCompliants(String tureOrFalse);
 
-    long getNoRow();
+    EdUserPaymentEntity modifyPayment(String value, int id);
+
+    String getNoRow();
 }

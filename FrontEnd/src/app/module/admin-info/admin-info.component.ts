@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { credential } from 'src/app/comman/credential';
+import { AdminSerService } from 'src/app/service/admin-ser.service';
+import { DataService } from 'src/app/service/data-service.service';
 
 @Component({
   selector: 'app-admin-info',
@@ -9,7 +12,29 @@ import { credential } from 'src/app/comman/credential';
 })
 export class AdminInfoComponent {
 
-  constructor(private storage : credential,private router:Router) {}
+  subcrib:Subscription;
+  adminInfoId : any;
+  request : any;
+
+  constructor(private service : AdminSerService,private shareData:DataService,private storage : credential,private router:Router) {
+    this.subcrib = this.shareData.sharedString$.subscribe(
+      (newString)=> (this.adminInfoId = newString)
+     );
+     this.getUserInfo();
+  }
+
+  
+  getUserInfo() {
+    this.service.getAdminById(this.adminInfoId).subscribe(
+      (respo)=> {
+        this.request = respo;        
+      }
+    );
+  }
+
+  updateAdmin() {
+
+  }
 
   Back() {
     if(this.storage.getRole()=='EDA') {

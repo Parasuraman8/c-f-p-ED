@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthGard } from '../comman/auth-gard';
 import { credential } from '../comman/credential';
 import { LoginServiceService } from '../service/login-service.service';
+import { UserServiceService } from '../service/user-service.service';
 
 @Component({
   selector: 'app-user-bank',
@@ -11,11 +12,16 @@ import { LoginServiceService } from '../service/login-service.service';
 })
 export class UserBankComponent {
 
+  bankResponse : any;
+
   constructor(
     private loginservice : LoginServiceService,
     private storage : credential,
-    private router : Router
-  ) {}
+    private router : Router,
+    private sevice : UserServiceService
+  ) {
+    this.getBank()
+  }
 
 
   logout() {
@@ -25,5 +31,13 @@ export class UserBankComponent {
     this.storage.setLogin(false);
   }
 
+  getBank() {
+    this.sevice.getUser().subscribe(
+      (response)=> {
+        this.bankResponse = response;
+        console.log(this.bankResponse);
+      }
+    );
+  }
 
 }

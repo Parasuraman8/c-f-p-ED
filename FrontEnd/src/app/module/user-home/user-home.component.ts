@@ -11,6 +11,7 @@ import { UserServiceService } from 'src/app/service/user-service.service';
 })
 export class UserHomeComponent {
 
+  response : any;
 
 
   constructor(
@@ -19,9 +20,17 @@ export class UserHomeComponent {
     private router : Router,
     private service : UserServiceService
   ) {
-    service.getUser();
+    this.getUser();
   }
 
+  getUser() {
+    this.service.getUser().subscribe(
+      (Response)=> {
+        this.response = Response;
+        console.log(this.response);
+      }
+    );
+  }
 
   logout() {
     this.router.navigate(['/home']);
@@ -29,5 +38,6 @@ export class UserHomeComponent {
     this.storage.removeTokenAndRole();
     this.storage.setLogin(false);
   }
+
 
 }

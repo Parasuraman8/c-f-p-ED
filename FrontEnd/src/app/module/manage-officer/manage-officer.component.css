@@ -220,4 +220,15 @@ footer {
     background-color: rgb(245, 7, 173);
   }
 
+  .pre:disabled {
+    background-color: rgb(245, 7, 173);;
+    color: white;
+  }
+
+  .nex:disabled {
+    background-color: rgb(245, 7, 173);;
+    color: white;
+    
+  }
+
 

@@ -33,19 +33,19 @@
 
               <div class="input-box">
 
-                <input type="text" name="username"placeholder="User Name" required> 
+                <input type="text" name="username"placeholder="User Name" required [(ngModel)]="request.role"> 
 
               </div>
 
               <div class="input-box">
 
-                <input type="password" name="password"  placeholder="Password" required> 
+                <input type="text" name="password"  placeholder="Password" required [(ngModel)]="request.roleDesc"> 
 
               </div>
 
              
 
-              <button class="modify">Modify & Exit</button>
+              <button (click)="updateRole()" class="modify">Modify & Exit</button>
 
             </form>
 
@@ -60,7 +60,7 @@
 
           <p>&copy; <b> Enforcement Directorate. </b> <br>All rights reserved. <br> <br> <u> Developer Info</u> <br> <br>Parasuraman D <br> Java Developer at algoriant
           <br> Vishnuparasu7@gmail.com
-          <br> www.algoriant.com <br> [ any bug message karo ]</p>
+          <br> www.algoriant.com <br></p>
   
           </footer>
   

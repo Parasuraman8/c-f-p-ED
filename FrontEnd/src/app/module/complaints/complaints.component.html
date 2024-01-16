@@ -24,9 +24,7 @@
              <li><a class="active" routerLink="/home/Edo-page/Complaints">Complaints</a></li>
            <button class="signout" (click) = "logout()">Sing Out</button>
 
-          </ul>
-
-          
+          </ul> 
       </nav>
 
   </header>
@@ -39,6 +37,7 @@
         <table>
           <tbody>
             <tr>
+              <th>Payment Id</th>
               <th>Sender ID</th>
               <th>Recevier ID</th>
               <th>Sender Acct No</th>
@@ -52,22 +51,25 @@
               <th>---</th>
               </tr>
               <tr>
-                <td>EDUID01</td>
-                <td>EDUID02</td>
-                <td>1234567890</td>
-                <td>1234567890</td>
-                <td>1000000000</td>
-                <td>2024-01-05 </td>
-                <td>INDIAN BANK</td>
-                <td>SBI</td>
-                <td>INIDA</td>
-                <td>USA</td>
-                <td><Button class="Remove">Remove</Button></td>
+                <tr  *ngFor="let detail  of getDisplayData()">
+                  <table>{{detail.paymentId}}</table>
+                  <td>{{detail.eduidSender}}</td>
+                  <td>{{detail.eduidRecevier}}</td>
+                  <td>{{detail.senderAcctNo}}</td>
+                  <td>{{detail.recevierAcctNo}}</td>
+                  <td>{{detail.amount}}</td>
+                  <td>{{detail.dateAndTime}}</td>
+                  <td>{{detail.bankNameSender}}</td>
+                  <td>{{detail.bankNameReciver}}</td>
+                  <td>{{detail.bankCountrySender}}</td>
+                  <td>{{detail.bankCountryReciver}}</td>
+                <td><Button (click)="removeFromComplaint(detail.paymentId)" class="Remove">Remove</Button></td>
               </tr>
               
           </tbody>
         </table>
-
+        <button (click)="previousPage()" [disabled]="currentPage === 1" class="pre">Previous</button>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages()" class="nex">Next</button>
       </div>
 
     </body>
@@ -76,7 +78,7 @@
 
           <p>&copy; <b> Enforcement Directorate. </b> <br>All rights reserved. <br> <br> <u> Developer Info</u> <br> <br>Parasuraman D <br> Java Developer at algoriant
           <br> Vishnuparasu7@gmail.com
-          <br> www.algoriant.com <br> [ any bug message karo ]</p>
+          <br> www.algoriant.com <br></p>
   
           </footer>
   

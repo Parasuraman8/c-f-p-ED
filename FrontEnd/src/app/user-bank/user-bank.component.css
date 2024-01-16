@@ -113,6 +113,7 @@ nav ul{
         border-collapse: collapse;  
         border-radius: 25px;
         color: white;
+        margin-bottom: 250px;
       }
       
       th,tr,td {

@@ -87,13 +87,13 @@ footer {
 
 .wrapper input:hover{
   border: 3px solid green;
-  border-radius: 40px;
+  border-radius: 10px;
   color: black;
 }
 
 .wrapper select:hover {
   border: 3px solid green;
-  border-radius: 40px;
+  border-radius: 10px;
 }
 
 .wrapper input,select {
@@ -105,7 +105,7 @@ footer {
   border: none;
   outline: none;
   border: 2px solid white;
-  border-radius: 50px ;
+  border-radius: 10px ;
   padding: 19px 20px 15px;
 
 }

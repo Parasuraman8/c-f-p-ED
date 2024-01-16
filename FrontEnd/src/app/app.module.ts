@@ -44,6 +44,7 @@ import { RoleInfoComponent } from './module/role-info/role-info.component';
 import { NewOfficerRegisterFormComponent } from './module/new-officer-register-form/new-officer-register-form.component';
 import { NewAdminRegisterFormComponent } from './module/new-admin-register-form/new-admin-register-form.component';
 import { NewRoleFormComponent } from './module/new-role-form/new-role-form.component';
+import { PayRequest } from './pojo/pay-request';
 
 
 @NgModule({
@@ -100,7 +101,8 @@ import { NewRoleFormComponent } from './module/new-role-form/new-role-form.compo
       multi: true
     },
     LoginRequest,
-    LoginResponse
+    LoginResponse,
+    PayRequest
   ],
   bootstrap: [AppComponent]
 })

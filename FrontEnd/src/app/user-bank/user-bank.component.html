@@ -43,13 +43,13 @@
             <th>Balance</th>
             <th>Status </th>
             </tr>
-            <tr>
-              <td>12354789</td>
-              <td>India</td>
-              <td>Indian Bank</td>
-              <td>kandachipuram</td>
-              <td>1000000000</td>
-              <td>Active</td>
+            <tr *ngFor="let bank of bankResponse.edUserBankEntities">
+              <td>{{bank.acctNo}}</td>
+              <td>{{bank.bankCountry}}</td>
+              <td>{{bank.bankName}}</td>
+              <td>{{bank.branch}}</td>
+              <td>{{bank.totalAmount}}</td>
+              <td>{{bank.acctStatus}}</td>
             </tr>
             
         </tbody>
@@ -63,7 +63,7 @@
 
           <p>&copy; <b> Enforcement Directorate. </b> <br>All rights reserved. <br> <br> <u> Developer Info</u> <br> <br>Parasuraman D <br> Java Developer at algoriant
           <br> Vishnuparasu7@gmail.com
-          <br> www.algoriant.com <br> [ any bug message karo ]</p>
+          <br> www.algoriant.com <br></p>
   
           </footer>
   

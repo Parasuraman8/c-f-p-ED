@@ -34,6 +34,6 @@ public interface EdAdminService {
 
     EdRolesEntity modifyRole(String roleName, EdRolesEntity edRolesEntity);
 
-    long getNoRow();
+    String getNoRow();
 
 }

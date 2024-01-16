@@ -18,7 +18,7 @@ public class EdOfficerController {
     EdOfficerServiceImpl edOfficerService;
 
     @GetMapping("/totalNumberOfRow")
-    public ResponseEntity<Long>getNoOfRow() {
+    public ResponseEntity<String>getNoOfRow() {
         return new ResponseEntity<>(edOfficerService.getNoRow(),HttpStatus.OK);
     }
     @GetMapping("/getOfficer")

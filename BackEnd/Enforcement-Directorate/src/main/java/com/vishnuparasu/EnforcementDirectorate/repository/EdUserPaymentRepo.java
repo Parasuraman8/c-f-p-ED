@@ -16,13 +16,15 @@ import java.util.Optional;
 @Service
 @EnableJpaRepositories
 @Repository
-public interface EdUserPaymentRepo extends JpaRepository<EdUserPaymentEntity,String> {
-    @Query("SELECT u from EdUserPaymentEntity u where u.eduidSender = :eduidSender")
-    Optional<EdUserPaymentEntity> findSenderByEduid(@Param("eduidSender")String eduidSender);
+public interface EdUserPaymentRepo extends JpaRepository<EdUserPaymentEntity,Integer> {
+    @Query("SELECT u from EdUserPaymentEntity u where (:eduidSender IN (u.eduidSender, u.eduidRecevier)) AND u.isLegal = 'True'")
+    List<EdUserPaymentEntity> findSenderByEduid(@Param("eduidSender")String eduidSender);
 
-    @Query("SELECT u from EdUserPaymentEntity u where u.eduidRecevier = :eduidRecevier")
-    Optional<EdUserPaymentEntity> findRecevierByEduid(@Param("eduidRecevier")String eduidRecevier);
+    @Query("SELECT u from EdUserPaymentEntity u where u.eduidRecevier = :eduidRecevier AND u.isLegal = 'True'")
+    List<EdUserPaymentEntity> findRecevierByEduid(@Param("eduidRecevier")String eduidRecevier);
 
+    @Query("SELECT u FROM EdUserPaymentEntity u WHERE (:eduid IN (u.eduidSender, u.eduidRecevier)) AND u.isLegal = 'False'")
+    List<EdUserPaymentEntity>findUserComplaintSenderOrReciever(@Param("eduid") String eduid);
 
     @Query("SELECT u from EdUserPaymentEntity u where u.isLegal = :isLegal")
     List<EdUserPaymentEntity> findAllByCompliantBoolean(@Param("isLegal")String isLegal);

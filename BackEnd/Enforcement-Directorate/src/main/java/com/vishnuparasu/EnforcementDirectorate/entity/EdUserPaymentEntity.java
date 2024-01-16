@@ -1,16 +1,19 @@
 package com.vishnuparasu.EnforcementDirectorate.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.Date;
+import com.sun.org.glassfish.external.statistics.TimeStatistic;
+
+import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "ed_user_payment")
 public class EdUserPaymentEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "payment_id")
+    private  int paymentId;
     @Column(name = "eduid_sender")
     private String eduidSender;
 
@@ -27,7 +30,15 @@ public class EdUserPaymentEntity {
     private long amount;
 
     @Column(name = "date_and_time")
-    private Date dateAndTime;
+    private String dateAndTime;
+
+    public int getPaymentId() {
+        return paymentId;
+    }
+
+    public void setPaymentId(int paymentId) {
+        this.paymentId = paymentId;
+    }
 
     @Column(name = "is_legal")
     private String isLegal;
@@ -85,11 +96,11 @@ public class EdUserPaymentEntity {
         this.amount = amount;
     }
 
-    public Date getDateAndTime() {
+    public String getDateAndTime() {
         return dateAndTime;
     }
 
-    public void setDateAndTime(Date dateAndTime) {
+    public void setDateAndTime(String dateAndTime) {
         this.dateAndTime = dateAndTime;
     }
 

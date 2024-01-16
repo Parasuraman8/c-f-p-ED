@@ -30,34 +30,34 @@
 
     <body>
 
-        <div class="profile">
+       
+<div class="bankInfo">
 
-            <table>
-              <tbody>
-                <tr>
-                  <th>Sender ID</th>
-                  <th>Recevier ID</th>
-                  <th>Sender Acct No</th>
-                  <th>Recevier Acct No</th>
-                  <th>Amount</th>
-                  <th>No of Row:4</th>
-                  </tr>
-                  <tr>
-                    <td>EDUID01</td>
-                    <td>EDUID02</td>
-                    <td>1234567890</td>
-                    <td>1234567890</td>
-                    <td>1000000000</td>
-                    <td ><button (click)="view()" class="view" >View</button></td>
+  <table>
+      <tbody>
+        <tr>
+          <th>Account Number</th>
+          <th>Bank Country</th>
+          <th>Bank Name</th>
+          <th>Branch</th>
+          <th>Balance</th>
+          <th>Status </th>
+          </tr>
+          <tr *ngFor="let bank of getDisplayData()">
+            <td>{{bank.acctNo}}</td>
+            <td>{{bank.bankCountry}}</td>
+            <td>{{bank.bankName}}</td>
+            <td>{{bank.branch}}</td>
+            <td>{{bank.totalAmount}}</td>
+            <td>{{bank.acctStatus}}</td>
+          </tr>
+          
+      </tbody>
+    </table>
+    <button (click)="previousPage()" [disabled]="currentPage === 1" class="pre">Previous</button>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages()" class="nex">Next</button>
 
-
-                  </tr>
-                  
-              </tbody>
-            </table>
-            <button class="pre">Previous</button>
-            <button class="nex">Next</button>
-          </div>
+</div>
           
       </body>
 
@@ -65,7 +65,7 @@
 
           <p>&copy; <b> Enforcement Directorate. </b> <br>All rights reserved. <br> <br> <u> Developer Info</u> <br> <br>Parasuraman D <br> Java Developer at algoriant
           <br> Vishnuparasu7@gmail.com
-          <br> www.algoriant.com <br> [ any bug message karo ]</p>
+          <br> www.algoriant.com <br></p>
   
           </footer>
   

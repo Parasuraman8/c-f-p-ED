@@ -101,15 +101,16 @@ body {
     border: none;
     outline: none;
     border: 2px solid white;
-    border-radius: 40px;
+    border-radius: 12px;
     padding: 20px 45px 20px 20px;
+    
    
 }
 
 .input-box:hover {
 
-    border: 3px solid green;
-    border-radius: 40px;
+    border: 2px solid green;
+    border-radius: 12px;
 }
 
 .input-box input::placeholder {

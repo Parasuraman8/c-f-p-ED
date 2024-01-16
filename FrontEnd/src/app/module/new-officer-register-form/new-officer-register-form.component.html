@@ -48,36 +48,30 @@
 
 
           <label for="Name">Enter Name:<span>*</span></label>
-          <input class="input-box" id="Name" type="text" placeholder="eg: Ram V"><br>
+          <input class="input-box" id="Name" type="text" placeholder="eg: Ram V" name="name" [(ngModel)]="officerRequest.name"><br>
 
           <label for="date">Enter Date Of Brith:<span>*</span></label>
-          <input type="text" name="date" placeholder="eg: yyyy-mm-dd" ><br>
+          <input type="text" name="date" placeholder="eg: yyyy-mm-dd" [(ngModel)]="officerRequest.dob"><br>
 
           <label for="gender">Select Gender :</label>
-          <select id="gender" name="gender">
-            <option>--select---</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Others">Others</option>
+          <select id="gender" name="gender" [(ngModel)]="officerRequest.gender">
+            <option selected=" " disabled>--select---</option>
+            <option [ngValue]="'Male'">Male</option>
+            <option [ngValue]="'Female'">Female</option>
+            <option [ngValue]="'Others'">Others</option>
           </select><br>
 
           <label for="phone">Enter Phone Number:<span>*</span> </label>
-          <input type="text" name="phone" id="phone" placeholder="eg: (+91) 10 digit no"><br>
+          <input type="text" name="phone" id="phone" placeholder="eg: 10 digit no" [(ngModel)]="officerRequest.pho"><br>
 
           <label for="gmail">Enter Gmail:<span>*</span></label>
-          <input type="email" name="gmail" id="none" required placeholder="eg: vishnu@gmail.com"><br>
+          <input type="email" name="gmail" id="none" required placeholder="eg: vishnu@gmail.com" [(ngModel)]="officerRequest.gmail"><br>
 
           <label for="fname">Enter Father Name:</label>
-          <input type="text" name="fname" placeholder="eg: Vishnu"><br>
-
-          <label for="com">Enter Community:</label>
-          <input type="text" name="com" placeholder="eg: BC,MBC,etc"><br>
-
-          <label for="religion">Enter religion:</label>
-          <input type="text" name="religion" placeholder="eg: hindu,etc"><br>
+          <input type="text" name="fname" placeholder="eg: Vishnu" [(ngModel)]="officerRequest.fname"><br>
 
           <label for="adhar">Enter Adhar number:<span>*</span></label>
-          <input type="text" name="adhar" placeholder="xxxx-xxxx-xxxx"><br>
+          <input type="text" name="adhar" placeholder="xxxx-xxxx-xxxx" [(ngModel)]="officerRequest.adharNumber"><br>
         </form>
 
       </div>
@@ -88,22 +82,22 @@
           <h2>Job Information</h2>
 
           <label for="ql">Enter Qualification:<span>*</span></label>
-          <input type="text" name="ql" placeholder="eg: B.Sc, M.Sc, etc"><br>
+          <input type="text" name="ql" placeholder="eg: B.Sc, M.Sc, etc" [(ngModel)]="officerRequest.qualification"><br>
 
           <label for="job">Enter Work Field:<span>*</span></label>
-          <input type="text" name="Job" placeholder="eg: IT,Former,Political,etc"><br>
+          <input type="text" name="Job" placeholder="eg: IT,Former,Political,etc" [(ngModel)]="officerRequest.job"><br>
 
           <label for="jobPosition">Enter Posititon in That Field:</label>
-          <input type="text" name="jobPosition" placeholder="eg: HR,Developer,etc"><br>
+          <input type="text" name="jobPosition" placeholder="eg: HR,Developer,etc"[(ngModel)]="officerRequest.jobPosition"><br>
 
           <label for="salary">Enter Average Salary (P/Month):<span>*</span></label>
-          <input type="text" name="salary" placeholder="eg: 1,00,000"><br>
+          <input type="text" name="salary" placeholder="eg: 1,00,000" [(ngModel)]="officerRequest.salary"><br>
 
           <label for="jsd">Enter the Join Date On that Work:<span>*</span></label>
-          <input type="text" name="jsd" placeholder="eg: yyyy-mm-dd"><br>
+          <input type="text" name="jsd" placeholder="eg: yyyy-mm-dd" [(ngModel)]="officerRequest.jsd"><br>
 
         </form>
-        <button class="Register">Register</button>
+        <button (click)="createOfficer()" class="Register">Register</button>
       </div>
 
 
@@ -115,7 +109,7 @@
 
           <p>&copy; <b> Enforcement Directorate. </b> <br>All rights reserved. <br> <br> <u> Developer Info</u> <br> <br>Parasuraman D <br> Java Developer at algoriant
           <br> Vishnuparasu7@gmail.com
-          <br> www.algoriant.com <br> [ any bug message karo ]</p>
+          <br> www.algoriant.com <br></p>
   
           </footer>
   

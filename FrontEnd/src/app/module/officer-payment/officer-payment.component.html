@@ -39,6 +39,7 @@
         <table>
           <tbody>
             <tr>
+              <th>Payment Id</th>
               <th>Sender ID</th>
               <th>Recevier ID</th>
               <th>Sender Acct No</th>
@@ -51,22 +52,25 @@
               <th>Recevier Bank Country</th>
               <th>Illegal</th>
               </tr>
-              <tr>
-                <td>EDUID01</td>
-                <td>EDUID02</td>
-                <td>1234567890</td>
-                <td>1234567890</td>
-                <td>1000000000</td>
-                <td>2024-01-05 </td>
-                <td>INDIAN BANK</td>
-                <td>SBI</td>
-                <td>INIDA</td>
-                <td>USA</td>
-                <td><button class="yes">Yes</button></td>
+              <tr  *ngFor="let detail  of getDisplayData()">
+                <td>{{detail.paymentId}}</td>
+                <td>{{detail.eduidSender}}</td>
+                <td>{{detail.eduidRecevier}}</td>
+                <td>{{detail.senderAcctNo}}</td>
+                <td>{{detail.recevierAcctNo}}</td>
+                <td>{{detail.amount}}</td>
+                <td>{{detail.dateAndTime}}</td>
+                <td>{{detail.bankNameSender}}</td>
+                <td>{{detail.bankNameReciver}}</td>
+                <td>{{detail.bankCountrySender}}</td>
+                <td>{{detail.bankCountryReciver}}</td>
+                <td><button (click)="illegal(detail.paymentId)"  class="yes">Yes</button></td>
               </tr>
               
           </tbody>
         </table>
+        <button (click)="previousPage()" [disabled]="currentPage === 1" class="pre">Previous</button>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages()" class="nex">Next</button>
 
       </div>
 
@@ -76,7 +80,7 @@
 
           <p>&copy; <b> Enforcement Directorate. </b> <br>All rights reserved. <br> <br> <u> Developer Info</u> <br> <br>Parasuraman D <br> Java Developer at algoriant
           <br> Vishnuparasu7@gmail.com
-          <br> www.algoriant.com <br> [ any bug message karo ]</p>
+          <br> www.algoriant.com <br></p>
   
           </footer>
   

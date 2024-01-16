@@ -102,34 +102,31 @@ nav ul{
         color: white;
         background-color: #45a049; 
       }
- 
-.dashbord  div{
-  color: white;
-  padding: 100px;
-  margin: 100px;
-  margin-top: 20px;
-  align-items: center;
-  border-radius: 20px;
-  background-color: #222;
+      .dashbord  div{
+        color: rgba(208, 215, 243, 0.973);
+        padding: 100px;
+        border-radius: 20px;
+        background-color: #222;
+      }
+      
+      
+      .dashbord ul li {
+        list-style: none;
+        display: inline-flex;
+        padding: auto;
+        margin: auto;
+      }
+      
+      .dashbord ul li a {
+        font-size: 25px;
+        margin: 100px;
+        text-decoration: none;
+      }
+      
+      .dashbord ul li a :hover {
+        color: white;
+      }
+      .dashbord {
+        font-family: 'Times New Roman', Times, serif;
+      }
   
-}
-
-
-.dashbord ul li {
-  list-style: none;
-  display: inline-flex;
-  padding: auto;
-  margin: auto;
-}
-
-.dashbord ul li a {
-  font-size: 25px;
-  text-decoration: none;
-}
-
-.dashbord ul li a :hover {
-  color: lightslategray;
-}
-.dashbord {
-  font-family: 'Times New Roman', Times, serif;
-}

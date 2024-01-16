@@ -21,7 +21,7 @@ public class EdUserController {
     EdUserServiceImpl edUserService;
 
     @GetMapping("/totalNumberOfRow")
-    public ResponseEntity<Long>getNoOfRow() {
+    public ResponseEntity<String>getNoOfRow() {
         return new ResponseEntity<>(edUserService.getNoRow(),HttpStatus.OK);
     }
 
@@ -56,6 +56,11 @@ public class EdUserController {
         return new ResponseEntity<>(edUserService.modifyUser(edUserEntity,eduid),HttpStatus.OK);
     }
 
+    @PutMapping("/modifyPayment")
+    public ResponseEntity<EdUserPaymentEntity>modifyPayment(@RequestParam("value") String value , @RequestParam("id") int id) {
+        return new ResponseEntity<>(edUserService.modifyPayment(value,id),HttpStatus.OK);
+    }
+
 
     @DeleteMapping("/deleteEdUser")
     public ResponseEntity<String> deleteEdUser(@RequestParam("eduid") String eduid){
@@ -68,13 +73,18 @@ public class EdUserController {
     }
 
     @GetMapping("/senderDetail")
-    public ResponseEntity<EdUserPaymentEntity> getSenderDetail(@RequestParam("senderEduid") String senderEduid) {
+    public ResponseEntity<List<EdUserPaymentEntity>> getSenderDetail(@RequestParam("senderEduid") String senderEduid) {
         return new ResponseEntity<>(edUserService.getSenderDetail(senderEduid),HttpStatus.OK);
     }
 
     @GetMapping("/reciverDetail")
-    public ResponseEntity<EdUserPaymentEntity> getReciverDetail(@RequestParam("reciveEduid") String recevierEduid) {
+    public ResponseEntity<List<EdUserPaymentEntity>> getReciverDetail(@RequestParam("reciveEduid") String recevierEduid) {
         return new ResponseEntity<>(edUserService.getRecevierDetail(recevierEduid),HttpStatus.OK);
+    }
+
+    @GetMapping("/userComplainList")
+    public  ResponseEntity<List<EdUserPaymentEntity>> getUserComplaintList(@RequestParam("eduid") String eduid) {
+        return new ResponseEntity<>(edUserService.getUserComplaint(eduid),HttpStatus.OK);
     }
 
     @GetMapping("/getAllPayment")
