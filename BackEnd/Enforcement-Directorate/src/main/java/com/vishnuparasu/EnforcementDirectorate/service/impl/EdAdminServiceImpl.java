@@ -97,7 +97,6 @@ public class EdAdminServiceImpl implements EdAdminService {
             edAdminEntity1.setGmail(edAdminEntity.getGmail());
             edAdminEntity1.setPho(edAdminEntity.getPho());
             edAdminEntity1.setGender(edAdminEntity.getGender());
-            edAdminEntity1.setEdUserCredentials(edAdminEntity.getEdUserCredentials());
             return edAdminRepo.save(edAdminEntity1);
         }
         return null;

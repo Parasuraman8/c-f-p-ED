@@ -29,7 +29,10 @@ export class NewAdminRegisterFormComponent {
   createAdmin() {
     this.sevice.createAdmin(this.request).subscribe(
       (Response)=> {
+        console.log(Response);
         alert("Admin Saved\nUserName : "+Response.edaid+"\nPassword : "+Response.dob);
+        this.router.navigate(['/home/Eda-page/Manager/Manage-Admin']);
+
       },
       (error)=> {
         console.log(error);

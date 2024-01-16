@@ -47,8 +47,6 @@ export class OfficerServeService {
         }
       ]
     }
-    console.log("before hit"+request);
-    
     
     return this.http.put<any>(MODIFY_ED_OFFICER+officerRequest.edoid,request);
   }

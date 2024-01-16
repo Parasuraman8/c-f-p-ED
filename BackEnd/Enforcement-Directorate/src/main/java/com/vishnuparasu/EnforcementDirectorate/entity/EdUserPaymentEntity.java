@@ -1,10 +1,7 @@
 package com.vishnuparasu.EnforcementDirectorate.entity;
 
-import com.sun.org.glassfish.external.statistics.TimeStatistic;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
 
 @Entity
 @Table(name = "ed_user_payment")

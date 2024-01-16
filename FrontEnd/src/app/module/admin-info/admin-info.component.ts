@@ -33,7 +33,14 @@ export class AdminInfoComponent {
   }
 
   updateAdmin() {
-
+    this.service.updateAdmin(this.request).subscribe(
+      (Response)=> {
+        alert("changes saved!!!");
+          this.router.navigate(['/home/Eda-page/Manager/Manage-Admin']);
+       }, (error)=> {
+        alert("error while save the changed!!!");
+       }
+    );
   }
 
   Back() {
