@@ -1,6 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { DELETE_ED_ROLE } from 'src/app/comman/constant';
 import { credential } from 'src/app/comman/credential';
+import { AdminSerService } from 'src/app/service/admin-ser.service';
+import { DataService } from 'src/app/service/data-service.service';
 
 @Component({
   selector: 'app-manage-role',
@@ -9,7 +13,9 @@ import { credential } from 'src/app/comman/credential';
 })
 export class ManageRoleComponent {
 
-  constructor(private storage: credential,private router : Router) {}
+  constructor(private shareData:DataService ,private http:HttpClient,private service : AdminSerService,private storage: credential,private router : Router) {
+    this.getAllRoles();
+  }
 
   BackPage() {
     if(this.storage.getRole()=='EDA') {
@@ -21,12 +27,40 @@ export class ManageRoleComponent {
   }
 
   view(hell:string) {
-    
+    this.shareData.updateSharedString(hell);
     this.router.navigate(['/home/Eda-page/Manager/Manage-Role/Role-info']);
    
   }
 
   showForm() {
     this.router.navigate(['/home/Eda-page/Manager/Manage-Role/New-Role']);
+  }
+
+  listOfRoles:any;
+  noOfRole:any;
+
+  getAllRoles() {
+
+
+    this.service.getAllRoles().subscribe(
+      (Response) => {
+        this.listOfRoles = Response;
+        this.noOfRole = this.listOfRoles.length;        
+      }
+    );
+  }
+
+  remove(hell: string) {
+    this.http.delete(DELETE_ED_ROLE + hell, { responseType: 'text' }).subscribe(
+      (response) => {
+        alert(hell + ' was deleted!!!');
+        this.listOfRoles = this.listOfRoles.filter((roles: { role: string; }) => roles.role !== hell);
+        this.noOfRole = this.listOfRoles.length;
+      },
+      (error) => {
+        console.error('Error:', error);
+        alert("you need to delete user & officer before the role delete ");
+      }
+    );
   }
 }

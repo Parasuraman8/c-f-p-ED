@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { credential } from 'src/app/comman/credential';
+import { OfficerSignUp } from 'src/app/pojo/officer-sign-up';
+import { OfficerServeService } from 'src/app/service/officer-serve.service';
 
 @Component({
   selector: 'app-new-officer-register-form',
@@ -9,7 +11,9 @@ import { credential } from 'src/app/comman/credential';
 })
 export class NewOfficerRegisterFormComponent {
 
-  constructor( private st : credential, private router : Router) { }
+  constructor(private servie:OfficerServeService, private st : credential, private router : Router) { }
+
+  officerRequest : OfficerSignUp =  new OfficerSignUp;
 
   closeRegisterForm() {
 
@@ -18,9 +22,27 @@ export class NewOfficerRegisterFormComponent {
 
     } else if( this.st.getRole()=='EDO') {
       this.router.navigate(['/home/Edo-page/officer-manager/Manage-Officer']);
-    } else {
-      this.router.navigate(['/home/login']);
     }
  
+  }
+
+  createOfficer() {
+    this.servie.createOfficer(this.officerRequest).subscribe(
+      (respo)=> {
+        
+    if(this.st.getRole()=='EDA') {
+      this.router.navigate(['/home/Eda-page/Manager/Manage-Officer']);
+
+    } else if( this.st.getRole()=='EDO') {
+      this.router.navigate(['/home/Edo-page/officer-manager/Manage-Officer']);
+    }
+        console.log(respo);
+        
+      },(error) => {
+        console.log(error);
+        
+      }
+    );
+    
   }
 }

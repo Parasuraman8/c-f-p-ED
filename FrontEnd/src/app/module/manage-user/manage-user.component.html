@@ -31,10 +31,9 @@
     <body>
 
         <div class="profile">
-
           <button (click)="showForm()" class="add">Create</button>
+         
             <table >
-             
               <tbody>
                 <tr>
                   <th>ID</th>
@@ -43,27 +42,25 @@
                   <th>Date Of Brith</th>
                   <th>Phone Number</th>
                   <th>gmail </th>
-                  <th>No Of Row </th>
-                  <th>5</th>
+                  <th>view</th>
+                  <th>Remove</th>
                   </tr>
-                  <tr>
-                    
-                    <td>EDUID01</td>
-                    <td>parasuraman</td>
-                    <td>Male</td>
-                    <td >27-09-2003</td>
-                    <td>8825893416</td>
-                    <td >vishnuparasu&@gamil.com</td>
-                    <td ><button  class="view" (click) = "view('eduid01')">View & Edit</button></td>
-                    <td ><button class="Remove" (click) = "remove('eduid01')">Remove</button></td>
-                    
+                  <tr *ngFor="let user of getDisplayData()">
+                    <td>{{user.eduid}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>{{user.dob}}</td>
+                    <td>{{user.pho}}</td>
+                    <td >{{user.gmail}}</td>
+                    <td ><button class="view" (click) = "view(user.eduid)">View & Edit</button></td>
+                    <td ><button  class="Remove" (click) = "remove(user.eduid)">Remove</button></td>
                   </tr>  
                 
                 
                   </tbody>
             </table>
-            <button class="pre">Previous</button>
-            <button class="nex">Next</button>
+            <button (click)="previousPage()" [disabled]="currentPage === 1" class="pre">Previous</button>
+            <button (click)="nextPage()" [disabled]="currentPage === totalPages()" class="nex">Next</button>
     
           </div>
       </body>
@@ -72,7 +69,7 @@
 
           <p>&copy; <b> Enforcement Directorate. </b> <br>All rights reserved. <br> <br> <u> Developer Info</u> <br> <br>Parasuraman D <br> Java Developer at algoriant
           <br> Vishnuparasu7@gmail.com
-          <br> www.algoriant.com <br> [ any bug message karo ]</p>
+          <br> www.algoriant.com <br></p>
   
           </footer>
   

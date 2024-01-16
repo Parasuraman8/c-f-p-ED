@@ -41,7 +41,7 @@ const routes: Routes = [
   { path : 'home',children : [
                           
   { path : 'login', component : LoginFormComponent},
-  { path : 'Edu-page',component : UserHomeComponent/*,canActivate:[AuthGard]*/},
+  { path : 'Edu-page',component : UserHomeComponent,canActivate:[AuthGard]},
   { path : 'Edu-page',children : [
     { path : 'Bank-info', component : UserBankComponent},
     { path : 'User-Payment', component : UserPaymentComponent},
@@ -49,70 +49,70 @@ const routes: Routes = [
       { path : 'Pay', component : UserPaymentSendComponent},
       { path : 'history', component : UserHistroyComponent},
       { path : 'complaints', component : UserComplaintsComponent}
-    ]},
-  ]}, //,canActivate:[AuthGard]
-  { path : 'Edo-page', component : EdoHomeComponent}, //,canActivate:[AuthGard]
+    ],canActivate:[AuthGard]},
+  ],canActivate:[AuthGard]}, 
+  { path : 'Edo-page', component : EdoHomeComponent,canActivate:[AuthGard]}, 
    { path: 'Edo-page', children :[
-    { path : 'officer-manager', component : OfficerManagerComponent},
+    { path : 'officer-manager', component : OfficerManagerComponent,canActivate:[AuthGard]},
     { path : 'officer-manager', children : [
-      { path : 'Manage-User', component : ManageUserComponent},
+      { path : 'Manage-User', component : ManageUserComponent,canActivate:[AuthGard]},
       { path : 'Manage-User' , children:[
         { path: 'User-info', component : UserInfoComponent},
         { path : 'New-User', component : NewRegisterFormComponent}
-      ]},
-      { path : 'Manage-Creden', component : ManageCredentialComponent},
+      ],canActivate:[AuthGard]},
+      { path : 'Manage-Creden', component : ManageCredentialComponent,canActivate:[AuthGard]},
       { path : 'Manage-Creden' , children:[
         { path: 'Creden-info', component : CredenInfoComponent}
-      ]},
-      { path : 'Manage-Officer', component : ManageOfficerComponent},
+      ],canActivate:[AuthGard]},
+      { path : 'Manage-Officer', component : ManageOfficerComponent,canActivate:[AuthGard]},
       { path : 'Manage-Officer' , children:[
         { path: 'Officer-info', component : OfficerInfoComponent},
         { path : 'New-Officer', component : NewOfficerRegisterFormComponent}
-      ]},
-      { path : 'Manage-Payment', component : ManagePaymentComponent},
+      ],canActivate:[AuthGard]},
+      { path : 'Manage-Payment', component : ManagePaymentComponent,canActivate:[AuthGard]},
       { path : 'Manage-Payment' , children:[
         { path: 'Payment-info', component : PaymentInfoComponent}
-      ]},
+      ],canActivate:[AuthGard]},
 
-    ]},//,canActivate:[AuthGard]
-    { path : 'officer-payments', component : OfficerPaymentComponent},
-    { path : 'Complaints', component : ComplaintsComponent },
-   ]}, //,canActivate:[AuthGard]
-  { path : 'Eda-page', component : AdminHomeComponent}, //canActivate:[AuthGard]
+    ],canActivate:[AuthGard]},
+    { path : 'officer-payments', component : OfficerPaymentComponent,canActivate:[AuthGard]},
+    { path : 'Complaints', component : ComplaintsComponent,canActivate:[AuthGard] },
+   ]}, 
+  { path : 'Eda-page', component : AdminHomeComponent,canActivate:[AuthGard]}, 
   { path : 'Eda-page',children : [
-    { path : 'Manager', component : AdminManagerComponent },
+    { path : 'Manager', component : AdminManagerComponent ,canActivate:[AuthGard]},
     { path : 'Manager',children : [
-      { path : 'Manage-User', component : ManageUserComponent},
+      { path : 'Manage-User', component : ManageUserComponent,canActivate:[AuthGard]},
       { path : 'Manage-User', children:[
         {path : 'User-info', component : UserInfoComponent},
         { path : 'New-User', component : NewRegisterFormComponent}
-      ]},
-      { path : 'Manage-Role', component : ManageRoleComponent},
+      ],canActivate:[AuthGard]},
+      { path : 'Manage-Role', component : ManageRoleComponent,canActivate:[AuthGard]},
       { path : 'Manage-Role', children:[
         {path : 'Role-info', component : RoleInfoComponent},
         { path : 'New-Role', component : NewRoleFormComponent }
-      ]},
-      { path : 'Manage-Creden', component : ManageCredentialComponent},
+      ],canActivate:[AuthGard]},
+      { path : 'Manage-Creden', component : ManageCredentialComponent,canActivate:[AuthGard]},
       { path : 'Manage-Creden', children:[
         {path : 'Creden-info', component : CredenInfoComponent}
-      ]},
-      { path : 'Manage-Officer', component : ManageOfficerComponent},
+      ],canActivate:[AuthGard]},
+      { path : 'Manage-Officer', component : ManageOfficerComponent,canActivate:[AuthGard]},
       { path : 'Manage-Officer', children:[
         {path : 'Officer-info', component : OfficerInfoComponent},
         { path : 'New-Officer', component : NewOfficerRegisterFormComponent}
-      ]},
-      { path : 'Manage-Payment', component : ManagePaymentComponent},
+      ],canActivate:[AuthGard]},
+      { path : 'Manage-Payment', component : ManagePaymentComponent,canActivate:[AuthGard]},
       { path : 'Manage-Payment', children:[
         {path : 'Payment-info', component : PaymentInfoComponent}
-      ]},
-      { path : 'Manage-Admin', component : ManageAdminComponent},
+      ],canActivate:[AuthGard]},
+      { path : 'Manage-Admin', component : ManageAdminComponent,canActivate:[AuthGard]},
       { path : 'Manage-Admin', children:[
         {path : 'Admin-info', component : AdminInfoComponent},
         { path : 'New-Admin', component : NewAdminRegisterFormComponent}
-      ]},
+      ],canActivate:[AuthGard]},
 
-    ]}
-  ]},//,canActivate:[AuthGard]
+    ],canActivate:[AuthGard]}
+  ],canActivate:[AuthGard]},
   {path : 'login' , children : [
 
     { path : 'new-user-register-form',component : NewRegisterFormComponent},

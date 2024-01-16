@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { credential } from 'src/app/comman/credential';
+import { Roles } from 'src/app/pojo/roles';
+import { AdminSerService } from 'src/app/service/admin-ser.service';
 
 @Component({
   selector: 'app-new-role-form',
@@ -9,8 +11,9 @@ import { credential } from 'src/app/comman/credential';
 })
 export class NewRoleFormComponent {
 
-  constructor(private storage : credential,private router:Router) {}
+  constructor( private service:AdminSerService,private storage : credential,private router:Router) {}
 
+  roleRequest : Roles = new Roles;
 
   Back() {
     if(this.storage.getRole()=='EDA') {
@@ -18,6 +21,16 @@ export class NewRoleFormComponent {
     } else {
       this.router.navigate(['/home/Edo-page/officer-manager/Manage-Role']);
     }
+  }
+
+  createRole() {
+    this.service.createRole(this.roleRequest).subscribe(
+      (Response)=> {
+        alert(Response.role+" was created");
+      } , (error)=> {
+        alert("error while create Role");
+      }
+    );
   }
 
 }

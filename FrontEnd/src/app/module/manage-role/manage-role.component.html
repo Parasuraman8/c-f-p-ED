@@ -31,27 +31,23 @@
     <body>
       <div class="profile">
 
-        <button (click)="showForm()" class="add">Create</button>
+        <button *ngIf="noOfRole!=3" (click)="showForm()" class="add">Create</button>
           <table>
            
             <tbody>
               <tr>
                 <th>Role Name</th>
                 <th>Role Desc</th>
-                <th>No Of Row</th>
-                <th>5</th>
+                <th>Modify</th>
+                <th>Remove</th>
                 </tr>
 
-                <tr>
-                  
-                  <td>EDA</td>
-                  <td>Admin</td>
-                  <td><button (click) = "view('eduid02')" class="view" >View & Edit</button></td>
-                  <td><button class="Remove" >Remove</button></td>
-                  
+                <tr *ngFor="let roles of listOfRoles">
+                  <td>{{roles.role}}</td>
+                  <td>{{roles.roleDesc}}</td>
+                  <td><button (click) = "view(roles.role)" class="view" >View & Edit</button></td>
+                  <td><button (click)="remove(roles.role)" class="Remove" >Remove</button></td>
                 </tr>  
-                           
-                
                 </tbody>
           </table>
   
@@ -62,7 +58,7 @@
 
           <p>&copy; <b> Enforcement Directorate. </b> <br>All rights reserved. <br> <br> <u> Developer Info</u> <br> <br>Parasuraman D <br> Java Developer at algoriant
           <br> Vishnuparasu7@gmail.com
-          <br> www.algoriant.com <br> [ any bug message karo ]</p>
+          <br> www.algoriant.com <br></p>
   
           </footer>
   

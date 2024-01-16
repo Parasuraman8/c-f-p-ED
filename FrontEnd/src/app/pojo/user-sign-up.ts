@@ -1,0 +1,20 @@
+export class UserSignUp {
+        name?:string;
+        dateOfBirth?:string;
+        gender?:string;
+        phone?:string;
+        gmail?:string;
+        fatherName?:string;
+        adharNumber?:string;
+        address?:string;
+        qualification?:string;
+        workField?:string;
+        jobPosition?:string;
+        salary?:string;
+        joinDate?:string;
+        accountNumber?:string;
+        country?:string;
+        bankName?:string;
+        bankBranch?:string;
+        accountStatus?:string;
+}

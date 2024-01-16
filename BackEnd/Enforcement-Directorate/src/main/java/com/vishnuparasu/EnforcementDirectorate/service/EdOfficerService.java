@@ -16,6 +16,6 @@ public interface EdOfficerService {
 
     EdOfficerEntity createOfficer(EdOfficerEntity edOfficerEntity);
 
-    long getNoRow();
+    String getNoRow();
 
 }

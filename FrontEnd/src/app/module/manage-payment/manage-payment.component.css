@@ -219,4 +219,17 @@ footer {
     background-color: rgb(245, 7, 173);
   }
 
+  .pre:disabled{
+    color: white;
+    background-color: rgb(245, 7, 173);
+  }
+  .nex:disabled {
+    color: white;
+    background-color: rgb(245, 7, 173);
+  }
+
+  .bankInfo{
+    margin: 50px;
+  }
+
 

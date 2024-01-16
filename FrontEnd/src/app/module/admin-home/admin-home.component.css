@@ -168,4 +168,5 @@ tbody tr,td{
 .root {
  width: 1510px;
  margin: 5px;
+ border-radius: 20px;
 }

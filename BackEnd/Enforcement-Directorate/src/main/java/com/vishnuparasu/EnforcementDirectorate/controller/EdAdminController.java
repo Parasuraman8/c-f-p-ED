@@ -20,7 +20,7 @@ public class EdAdminController {
     EdAdminServiceImpl edAdminService;
 
     @GetMapping("/totalNumberOfRow")
-    public ResponseEntity<Long>getNoOfRow() {
+    public ResponseEntity<String>getNoOfRow() {
         return new ResponseEntity<>(edAdminService.getNoRow(),HttpStatus.OK);
     }
 

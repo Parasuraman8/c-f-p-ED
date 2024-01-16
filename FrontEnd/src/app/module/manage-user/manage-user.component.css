@@ -51,6 +51,7 @@ footer {
 
 .profile{
     margin: 50px;
+    width: auto;
   }
   
   table {
@@ -142,7 +143,7 @@ footer {
     cursor: pointer;
     font-family: 'Times New Roman', Times, serif;
     
-  
+    width: auto;
     background-color: #e7f0e7; 
     color: rgb(17, 17, 17);
   
@@ -219,3 +220,13 @@ footer {
     background-color: rgb(245, 7, 173);
   }
 
+  .pre:disabled {
+    background-color: rgb(245, 7, 173);
+    color: white;
+  }
+
+  .nex:disabled {
+    background-color: rgb(245, 7, 173);;
+    color: white;
+    
+  }

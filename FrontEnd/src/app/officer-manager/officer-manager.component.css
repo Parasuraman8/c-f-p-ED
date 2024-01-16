@@ -88,14 +88,10 @@ nav a.active {
 
 
     .dashbord  div{
-      color: white;
-      padding: 75px;
-      margin: 60px;
-      margin-bottom: 100px;
-      align-items: center;
+      color:  rgba(208, 215, 243, 0.973);;
+      padding: 50px;
       border-radius: 20px;
       background-color: #222;
-      
     }
     
     
@@ -108,11 +104,12 @@ nav a.active {
     
     .dashbord ul li a {
       font-size: 25px;
+      margin: 100px;
       text-decoration: none;
     }
     
     .dashbord ul li a :hover {
-      color: lightslategray;
+      color: white ;
     }
     .dashbord {
       font-family: 'Times New Roman', Times, serif;
