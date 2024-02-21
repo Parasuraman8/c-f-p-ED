@@ -39,7 +39,6 @@ public class EdAdminServiceImpl implements EdAdminService {
                 admin.setRole("EDA");
                 admin.setRoleDesc("ADMIN");
                 edRolesRepo.save(admin);
-
             }
         };
     }

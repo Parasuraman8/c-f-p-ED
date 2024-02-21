@@ -1,7 +1,6 @@
 package com.vishnuparasu.EnforcementDirectorate.repository;
 
 import com.vishnuparasu.EnforcementDirectorate.entity.EdAdminEntity;
-import com.vishnuparasu.EnforcementDirectorate.entity.EdUserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

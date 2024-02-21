@@ -4,11 +4,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "ed_user")
@@ -27,9 +25,9 @@ public class EdUserEntity implements Serializable {
     @Column(name = "gender")
     private String gender;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd")
+
     @Column(name = "dob")
-    private Date dob;
+    private String dob;
 
     @Column(name = "pho")
     private long pho;
@@ -103,11 +101,11 @@ public class EdUserEntity implements Serializable {
         this.gender = gender;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
