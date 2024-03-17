@@ -36,9 +36,17 @@ export class UserPaymentSendComponent {
     this.pay.isLegal="True"
     this.service.payAmount(this.pay).subscribe(
       (Response) => {
-        alert("pay successfully!!!");
+        if(Response != null) {
+          alert("pay successfully!!!");
+          console.log(Response);
+          
+          this.router.navigate(['/home/Edu-page/User-Payment']);
+        } else {
+          alert("verify your sending amount is less than balance")
+        }
+   
 
-        this.router.navigate(['/home/Edu-page/User-Payment']);
+     
       }, (error)=> {
         alert("error while pay");
       }

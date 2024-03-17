@@ -18,8 +18,10 @@ public class EdJwtController {
 
     @PostMapping("/login")
     public ResponseEntity<EdLoginResponse> login(@RequestBody EdLoginRequest edLoginRequest) {
-        return  new ResponseEntity<>(edLoginService.login(edLoginRequest), HttpStatus.OK);
+        try {
+            return  new ResponseEntity<>(edLoginService.login(edLoginRequest), HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            return  new ResponseEntity<>(new EdLoginResponse(), HttpStatus.UNAUTHORIZED);
+        }
     }
-
-
 }

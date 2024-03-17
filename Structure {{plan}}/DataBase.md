@@ -107,5 +107,3 @@ UI
 --> sender acct no
 --> reveced acct no
 --> amt
-
-

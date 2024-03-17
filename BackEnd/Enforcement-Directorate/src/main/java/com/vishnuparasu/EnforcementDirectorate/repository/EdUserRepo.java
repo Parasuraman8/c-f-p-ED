@@ -22,4 +22,8 @@ public interface EdUserRepo extends JpaRepository<EdUserEntity,Integer> {
 
     @Query("SELECT u from EdUserEntity u where u.eduid = :eduid")
     Optional<EdUserEntity> findByEduid(@Param("eduid")String eduid);
+
+    @Query(value = "SELECT MAX(CAST(SUBSTRING(e.eduid, 6, LENGTH(e.eduid) - 5) AS UNSIGNED)) FROM ed_user e", nativeQuery = true)
+    Integer findMaxId();
+
 }

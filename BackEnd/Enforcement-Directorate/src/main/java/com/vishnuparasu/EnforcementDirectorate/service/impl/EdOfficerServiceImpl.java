@@ -88,8 +88,12 @@ public class EdOfficerServiceImpl implements EdOfficerService {
 
     @Override
     public String getNoRow() {
-        return "EDOID"+(edOfficerRepo.count()+1);
+        int lastRowId = 0;
+        Integer maxId = edOfficerRepo.findMaxId();
+        if (maxId != null) {
+            lastRowId = maxId;
+        }
+        return "EDOID"+(lastRowId+1);
     }
-
 
 }

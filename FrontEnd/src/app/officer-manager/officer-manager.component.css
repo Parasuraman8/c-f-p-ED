@@ -88,10 +88,14 @@ nav a.active {
 
 
     .dashbord  div{
-      color:  rgba(208, 215, 243, 0.973);;
+      color:  rgb(244, 244, 244);
       padding: 50px;
       border-radius: 20px;
       background-color: #222;
+    }
+
+    .dashbord ul li a :hover {
+      color: rgb(247, 7, 7) ;
     }
     
     
@@ -108,9 +112,35 @@ nav a.active {
       text-decoration: none;
     }
     
-    .dashbord ul li a :hover {
-      color: white ;
-    }
+   
     .dashbord {
       font-family: 'Times New Roman', Times, serif;
+    }
+    .wrapper-note {
+      background: #333;
+      width: 75%;
+      height: 25%;
+      margin: auto;
+      margin-top: 45px;
+      text-align: left;
+      color: white;
+      padding-top: 50px;
+      font-family: 'Times New Roman', Times, serif;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 20px;
+      margin-bottom: 45px;
+      margin-top: 15px;
+      padding-top: 20px;
+    }
+    
+    .wrapper-note h3 {
+      text-align: center;
+      font-weight: bolder;
+      text-decoration:none;
+      font-size: 30px;
+    }
+    
+    .wrapper-note span {
+      color: red;
     }
