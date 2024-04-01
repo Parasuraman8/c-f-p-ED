@@ -177,6 +177,11 @@ public class EdAdminServiceImpl implements EdAdminService {
 
     @Override
     public String getNoRow() {
-        return "EDAID"+(edAdminRepo.count()+1);
+        int lastRowId = 0;
+        Integer maxId = edAdminRepo.findMaxId();
+        if (maxId != null) {
+            lastRowId = maxId;
+        }
+        return "EDAID"+(lastRowId+1);
     }
 }

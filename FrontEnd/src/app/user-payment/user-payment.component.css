@@ -103,10 +103,14 @@ nav ul{
         background-color: #45a049; 
       }
       .dashbord  div{
-        color: rgba(208, 215, 243, 0.973);
+        color:  rgb(244, 244, 244);
         padding: 100px;
         border-radius: 20px;
         background-color: #222;
+      }
+  
+      .dashbord ul li a :hover {
+        color: rgb(247, 7, 7) ;
       }
       
       
@@ -123,9 +127,6 @@ nav ul{
         text-decoration: none;
       }
       
-      .dashbord ul li a :hover {
-        color: white;
-      }
       .dashbord {
         font-family: 'Times New Roman', Times, serif;
       }

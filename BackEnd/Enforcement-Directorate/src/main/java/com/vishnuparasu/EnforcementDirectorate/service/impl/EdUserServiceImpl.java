@@ -76,10 +76,10 @@ public class EdUserServiceImpl implements EdUserService {
     @Transactional
     @Override
     public String deleteUser(String eduid) {
-
-        edUserRepo.deleteByEduid(eduid);
         edUserBankRepo.deleteByEduid(eduid);
         edUserCredentialRepo.deleteUserByEduid(eduid);
+        edUserRepo.deleteByEduid(eduid);
+
 
         return eduid;
     }
@@ -118,13 +118,15 @@ public class EdUserServiceImpl implements EdUserService {
         String formatted = curentDateTime.format(formatter);
         edUserPaymentEntity.setDateAndTime(formatted);
         EdUserBankEntity edUserBankEntity = edUserBankRepo.findById(edUserPaymentEntity.getSenderAcctNo()).get();
-        edUserBankEntity.setTotalAmount(edUserBankEntity.getTotalAmount()-edUserPaymentEntity.getAmount());
-        edUserBankRepo.save(edUserBankEntity);
-        EdUserBankEntity recevierBankEntity = edUserBankRepo.findById(edUserPaymentEntity.getRecevierAcctNo()).get();
-        recevierBankEntity.setTotalAmount(recevierBankEntity.getTotalAmount()+edUserPaymentEntity.getAmount());
-        edUserBankRepo.save(recevierBankEntity);
-        return  edUserPaymentRepo.save(edUserPaymentEntity);
-
+        if ((edUserBankEntity.getTotalAmount() != 0) && (edUserBankEntity.getTotalAmount() != edUserPaymentEntity.getAmount() && edUserBankEntity.getTotalAmount() >= edUserPaymentEntity.getAmount())) {
+            edUserBankEntity.setTotalAmount(edUserBankEntity.getTotalAmount()-edUserPaymentEntity.getAmount());
+            edUserBankRepo.save(edUserBankEntity);
+            EdUserBankEntity recevierBankEntity = edUserBankRepo.findById(edUserPaymentEntity.getRecevierAcctNo()).get();
+            recevierBankEntity.setTotalAmount(recevierBankEntity.getTotalAmount()+edUserPaymentEntity.getAmount());
+            edUserBankRepo.save(recevierBankEntity);
+            return  edUserPaymentRepo.save(edUserPaymentEntity);
+        }
+        return null;
 
     }
 
@@ -172,7 +174,13 @@ public class EdUserServiceImpl implements EdUserService {
 
     @Override
     public String getNoRow() {
-        return "EDUID"+(edUserRepo.count()+01);
+        int lastRowId = 0;
+        Integer maxId = edUserRepo.findMaxId();
+        if (maxId != null) {
+            lastRowId = maxId;
+        }
+        return "EDUID"+(lastRowId+1);
     }
+
 
 }
