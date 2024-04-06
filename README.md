@@ -18,6 +18,6 @@
 # User's In The Software
 
     1 . Enforcement direcotrate officer as EDO
-    2 . Normarl User as USER
-    3 . Admin User as ADMIN
+    2 . Normarl User as EDU
+    3 . Admin User as EDA
 
